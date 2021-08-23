@@ -1,0 +1,158 @@
+/* フォント指定 */
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: whitesmoke;
+}
+
+/* 画像のレスポンシブ対応 */
+
+img {
+    width: auto;
+    max-width: auto;
+    height: auto;
+}
+
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    background: #ffffff;
+    padding: 1em;
+    margin: 0;
+    font-size: clamp(0.6rem, 0.6rem + 1vw, 1rem);
+}
+
+box {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    background: #ffffff;
+    padding: 1em;
+    margin: 0;
+}
+
+h5{
+    font-size: clamp(0.8rem, 0.8rem + 1vw, 1.3rem);
+}
+
+#TextDeta{
+    font-size: clamp(0.6rem, 0.6rem + 1vw, 1rem);
+}
+
+.TextDeta{
+    font-size: clamp(0.6rem, 0.6rem + 1vw, 1rem);
+}
+
+.TaxtList{
+    font-size: clamp(0.6rem, 0.6rem + 1vw, 1rem);
+}
+
+
+/* ====================================================== */
+
+mark1 {
+    background-color: #f08080;
+    ;
+}
+
+mark2 {
+    background-color: #ffff00;
+}
+
+mark3 {
+    background-color: #00ff7f;
+}
+
+mark4 {
+    background-color: paleturquoise;
+}
+
+mark5 {
+    background-color: skyblue;
+}
+
+mark6 {
+    background-color: thistle;
+}
+
+mark7 {
+    background-color: skyblue;
+}
+
+mark8 {
+    background-color: cornflowerblue;
+}
+
+/* ====================================================== */
+
+#tabs {
+    overflow: hidden;
+}
+
+#tabs input {
+    display: none;
+}
+
+#tabs label {
+    display: inline-block;
+    line-height: 40px;
+    width: 110px;
+    text-align: center;
+    cursor: pointer;
+    background: #eee;
+    transition: 0.3s;
+    border-radius: 10px 10px 0 0;
+}
+
+#tabs input:checked+label, #tabs label:hover {
+    background: #56B4BE;
+    color: #fff;
+}
+
+#contents {
+    padding: 5px 10px;
+    border-top: 2px solid #56B4BE;
+    box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+#contents p {
+    font-size: clamp(0.6rem, 0.6rem + 1vw, 1rem);
+    margin: 0;
+}
+
+#contents p.title {
+    font-size: clamp(0.8rem, 0.8rem + 1vw, 1.3rem);
+    font-weight: bold;
+}
+
+
+/* ====================================================== */
+
+.c-button {
+    display: inline-block;
+    max-width: auto;
+    text-align: left;
+    background-color: #56B4BE;
+    font-size: auto;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 4px;
+    border-bottom: 4px solid hsl(186, 38%, 46%);
+}
+
+.c-button:active {
+    transform: translateY(4px);
+    border-bottom: none;
+}
+
+.manual {
+    color: #56B4BE;
+    font-size: clamp(0.8rem, 0.8rem + 1vw, 1.3rem);
+}
+
+.ResText{
+    font-size: clamp(0.6rem, 0.6rem + 1vw, 1rem);
+}

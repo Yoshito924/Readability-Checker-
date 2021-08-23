@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ja">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138258869-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-138258869-1');
+    </script>
+
+    <!-- Vue を読み込む -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <!--文字エンコーディングの指定-->
+    <meta charset="utf-8">
+
+    <!--サイト情報-->
+    <meta property="og:title" content="読みやすさチェッカー【文章校正ウェブアプリ】" />
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://o-to.khufrudamonotes.com" />
+    <meta property="og:image" content="image/o-to site title.png" />
+    <meta property="og:site_name" content="読みやすさチェッカー【文章校正ウェブアプリ】" />
+    <meta name="og:description" content='読みにくい表現にハイライトをつける文章校正ツールです。採点機能もあります。あなたの文章は何点！？'>
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:image:width" content="328" />
+    <meta property="og:image:height" content="183" />
+
+    <!--ページタイトル-->
+    <title>読みやすさチェッカー【文章校正ウェブアプリ】</title>
+    <!--ページの概要-->
+    <meta name="description" content="読みにくい表現にハイライトをつける文章校正ツールです。採点機能もあります。あなたの文章は何点！？">
+    <meta name="keyword" content="文章校正,文章,読みやすさ,読みやすさチェッカー">
+
+    <!--Internet Explorer用の設定-->
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <!--viewport設定(レスポンシブデザイン対応)-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!--OGPタグ/twitterカード-->
+    <meta name="twitter:card" content="Summary Card" />
+    <meta name="twitter:site" content="@khufrudamonotes" />
+    <meta name="twitter:title" content="読みやすさチェッカー【文章校正ウェブアプリ】" />
+    <meta name="twitter:description" content="読みにくい表現にハイライトをつける文章校正ツールです。採点機能もあります。あなたの文章は何点！？">
+    <meta name="twitter:image" content="./img/title_img.png" />
+
+    <!--サイトアイコンの指定-->
+    <meta name="msapplication-square70x70logo" content="./img/icon/site-tile-70x70.png">
+    <meta name="msapplication-square150x150logo" content="./img/icon/site-tile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="./img/icon/site-tile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="./img/icon/site-tile-310x310.png">
+    <meta name="msapplication-TileColor" content="#0078d7">
+
+    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="./img/icon/favicon.ico">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="./img/icon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="57x57" href="./img/icon/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./img/icon/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./img/icon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./img/icon/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./img/icon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./img/icon/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./img/icon/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./img/icon/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/icon/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="36x36" href="./img/icon/android-chrome-36x36.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="./img/icon/android-chrome-48x48.png">
+    <link rel="icon" type="image/png" sizes="72x72" href="./img/icon/android-chrome-72x72.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./img/icon/android-chrome-96x96.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="./img/icon/android-chrome-128x128.png">
+    <link rel="icon" type="image/png" sizes="144x144" href="./img/icon/android-chrome-144x144.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="./img/icon/android-chrome-152x152.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./img/icon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="./img/icon/android-chrome-256x256.png">
+    <link rel="icon" type="image/png" sizes="384x384" href="./img/icon/android-chrome-384x384.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="./img/icon/android-chrome-512x512.png">
+    <link rel="icon" type="image/png" sizes="36x36" href="./img/icon/icon-36x36.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="./img/icon/icon-48x48.png">
+    <link rel="icon" type="image/png" sizes="72x72" href="./img/icon/icon-72x72.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./img/icon/icon-96x96.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="./img/icon/icon-128x128.png">
+    <link rel="icon" type="image/png" sizes="144x144" href="./img/icon/icon-144x144.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="./img/icon/icon-152x152.png">
+    <link rel="icon" type="image/png" sizes="160x160" href="./img/icon/icon-160x160.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./img/icon/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="196x196" href="./img/icon/icon-196x196.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="./img/icon/icon-256x256.png">
+    <link rel="icon" type="image/png" sizes="384x384" href="./img/icon/icon-384x384.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="./img/icon/icon-512x512.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/icon/icon-16x16.png">
+    <link rel="icon" type="image/png" sizes="24x24" href="./img/icon/icon-24x24.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/icon/icon-32x32.png">
+    <link rel="manifest" href="./img/icon/manifest.json">
+
+    <!-- AdSense コード -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1796975428667007"
+        crossorigin="anonymous"></script>
+
+    <!-- headのコンポーネントを読み込む -->
+    <div id="head">
+        <head-template></head-template>
+    </div>
+
+    <!--bootstrap を読み込む-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ヘッダーのコンポーネントを読み込む -->
+        <header id="header">
+            <header-template></header-template>
+        </header>
+
+        <!-- メイン -->
+        <main>
+
+            <!-- 見出しのコンポーネントを読み込む -->
+            <div id="display">
+                <title-display></title-display>
+            </div>
+
+
+
+                <h3 class="shadow p-3 mb-5 bg-white rounded mb-5 py-3">このアプリについて</h3>
+                <p class="pb-1"> 開発者：Yoshito Kimura</p>
+                <p class="pb-3"> Mail address：info[a]khufrudamonotes.com　([a]を＠に変えてください)</p>
+
+                <h3 class="shadow p-3 mb-5 bg-white rounded mb-5 py-3">免責事項</h3>
+
+
+                <p class="pb-1">
+                    当アプリに掲載された情報・資料を利用、使用、ダウンロードするなどの行為に関連して生じたあらゆる損害等について、理由の如何に関わらず、一切の責任を負いません。</p>
+                <h4 class="manual">情報の正確性について</h4>
+                <p class="pb-1">
+                    掲載された情報は、正くない可能性があります。</p>
+                <p class="pb-1">
+                    もちろん、情報・資料の掲載には細心の注意を払っております。<br> しかし、掲載された情報の内容の正確性は保証しかねます。</p>
+
+                <p class="pb-3">
+                    もし、誤った情報を発見された際は、<a href="https://khufrudamonotes.com/contact-english" target="_blank"
+                        rel="noopener noreferrer">コンタクト・フォーム</span></a>よりお知らせください。</p>
+
+
+                <h3 class="shadow p-3 mb-5 bg-white rounded mb-5 py-3">プライバシー・ポリシー</h3>
+
+                <h4 class="manual">広告の配信について</h4>
+                <p class="pb-1">
+                    このウェブサイトでは、第三者配信の広告サービスGoogleアドセンスを利用しています。</p>
+                <p class="pb-1">
+                    Googleなどの第三者配信事業者がCookieを使用して、ユーザーがそのウェブサイトや他のウェブサイトに過去にアクセスした際の情報に基づいて広告を配信します。 </p>
+                <p class="pb-1">
+                    Googleが広告Cookieを使用することにより、ユーザーがそのサイトや他のサイトにアクセスした際の情報に基づいて、Googleやそのパートナーが適切な広告をユーザーに表示できます。</p>
+                <p class="pb-1">
+                    パーソナライズ広告は 「<a href="https://adssettings.google.com/authenticated" target="_blank"
+                        rel="noopener noreferrer">広告設定</span></a>」より無効にできます。 </p>
+                <p class="pb-1">
+                    または、<a href="www.aboutads.info" target="_blank"
+                        rel="noopener noreferrer">www.aboutads.info</span></a>にアクセスすれば、パーソナライズ広告に使われる第三者配信事業者のCookieを無効にできます。
+                </p>
+
+                <h4 class="manual">アクセス解析ツールについて</h4>
+                <p class="pb-1"> このウェブサイトでは、Googleによるアクセス解析ツールGoogleアナリティクスを利用しています。 </p>
+                <p class="pb-1">
+                    Googleアナリティクスはトラフィックデータの収集のためにCookieを使用しています。 </p>
+                <p class="pb-1">
+                    トラフィックデータは匿名で収集されており、個人を特定するものではありません。<br>この機能はCookieを無効にすることで収集を拒否することが出来ます。</p>
+                <p class="pb-1">
+                    Googleアナリティクスでデータが収集、処理される仕組みについて詳しくは、 「<a
+                        href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank"
+                        rel="noopener noreferrer">ユーザーがGoogleパートナーのサイトやアプリを使用する際のGoogleによるデータ使用</span></a>」をご参照ください。
+                </p>
+
+                <h4 class="manual">継続的改善</h4>
+                <p class="pb-3"> 個人情報の取扱いに関する運用状況を適宜見直し、継続的な改善に努めるものとし、必要に応じて、本プライバシー・ポリシーを変更することがあります。 </p>
+
+        </main>
+
+        <!-- フッターのコンポーネントを読み込む -->
+        <footer id="footer">
+            <right-column></right-column>
+            <footer-template></footer-template>
+            <copyright-text></copyright-text>
+        </footer>
+    </div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+    <!-- JavaScriptを読み込む-->
+    <script src="Vue.js"></script>
+    <script src="index.js"></script>
+
+    <!-- シェアボタン用のJavaScript -->
+    <!-- Twitter -->
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <!-- facebook -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v11.0"
+        nonce="s28FkDyH"></script>
+    <!-- note -->
+    <script async src="https://cdn.st-note.com/js/social_button.min.js"></script>
+    <!-- はてなブックマーク -->
+    <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8"
+        async="async"></script>
+    <!-- Pocket -->
+    <script
+        type="text/javascript">!function (d, i) { if (!d.getElementById(i)) { var j = d.createElement("script"); j.id = i; j.src = "https://widgets.getpocket.com/v1/j/btn.js?v=1"; var w = d.getElementById(i); d.body.appendChild(j); } }(document, "pocket-btn-js");</script>
+    <!-- Line -->
+    <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async"
+        defer="defer"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="ja">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138258869-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-138258869-1');
+  </script>
+
+  <!-- Vue を読み込む -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+  <!--文字エンコーディングの指定-->
+  <meta charset="utf-8">
+
+  <!--サイト情報-->
+  <meta property="og:title" content="読みやすさチェッカー【文章校正ウェブアプリ】" />
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://o-to.khufrudamonotes.com" />
+  <meta property="og:image" content="image/o-to site title.png" />
+  <meta property="og:site_name" content="読みやすさチェッカー【文章校正ウェブアプリ】" />
+  <meta name="og:description" content='読みにくい表現にハイライトをつける文章校正ツールです。採点機能もあります。あなたの文章は何点！？'>
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:image:width" content="328" />
+  <meta property="og:image:height" content="183" />
+
+  <!--ページタイトル-->
+  <title>読みやすさチェッカー【文章校正ウェブアプリ】</title>
+  <!--ページの概要-->
+  <meta name="description" content="読みにくい表現にハイライトをつける文章校正ツールです。採点機能もあります。あなたの文章は何点！？">
+  <meta name="keyword" content="文章校正,文章,読みやすさ,読みやすさチェッカー">
+
+  <!--Internet Explorer用の設定-->
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!--viewport設定(レスポンシブデザイン対応)-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!--OGPタグ/twitterカード-->
+  <meta name="twitter:card" content="Summary Card" />
+  <meta name="twitter:site" content="@khufrudamonotes" />
+  <meta name="twitter:title" content="読みやすさチェッカー【文章校正ウェブアプリ】" />
+  <meta name="twitter:description" content="読みにくい表現にハイライトをつける文章校正ツールです。採点機能もあります。あなたの文章は何点！？">
+  <meta name="twitter:image" content="./img/title_img.png" />
+
+  <!--サイトアイコンの指定-->
+  <meta name="msapplication-square70x70logo" content="./img/icon/site-tile-70x70.png">
+  <meta name="msapplication-square150x150logo" content="./img/icon/site-tile-150x150.png">
+  <meta name="msapplication-wide310x150logo" content="./img/icon/site-tile-310x150.png">
+  <meta name="msapplication-square310x310logo" content="./img/icon/site-tile-310x310.png">
+  <meta name="msapplication-TileColor" content="#0078d7">
+
+  <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="./img/icon/favicon.ico">
+  <link rel="icon" type="image/vnd.microsoft.icon" href="./img/icon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="57x57" href="./img/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="./img/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="./img/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="./img/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="./img/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="./img/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="./img/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="./img/icon/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/icon/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="36x36" href="./img/icon/android-chrome-36x36.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="./img/icon/android-chrome-48x48.png">
+  <link rel="icon" type="image/png" sizes="72x72" href="./img/icon/android-chrome-72x72.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="./img/icon/android-chrome-96x96.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="./img/icon/android-chrome-128x128.png">
+  <link rel="icon" type="image/png" sizes="144x144" href="./img/icon/android-chrome-144x144.png">
+  <link rel="icon" type="image/png" sizes="152x152" href="./img/icon/android-chrome-152x152.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./img/icon/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="./img/icon/android-chrome-256x256.png">
+  <link rel="icon" type="image/png" sizes="384x384" href="./img/icon/android-chrome-384x384.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="./img/icon/android-chrome-512x512.png">
+  <link rel="icon" type="image/png" sizes="36x36" href="./img/icon/icon-36x36.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="./img/icon/icon-48x48.png">
+  <link rel="icon" type="image/png" sizes="72x72" href="./img/icon/icon-72x72.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="./img/icon/icon-96x96.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="./img/icon/icon-128x128.png">
+  <link rel="icon" type="image/png" sizes="144x144" href="./img/icon/icon-144x144.png">
+  <link rel="icon" type="image/png" sizes="152x152" href="./img/icon/icon-152x152.png">
+  <link rel="icon" type="image/png" sizes="160x160" href="./img/icon/icon-160x160.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./img/icon/icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="196x196" href="./img/icon/icon-196x196.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="./img/icon/icon-256x256.png">
+  <link rel="icon" type="image/png" sizes="384x384" href="./img/icon/icon-384x384.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="./img/icon/icon-512x512.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/icon/icon-16x16.png">
+  <link rel="icon" type="image/png" sizes="24x24" href="./img/icon/icon-24x24.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/icon/icon-32x32.png">
+  <link rel="manifest" href="./img/icon/manifest.json">
+
+  <!-- AdSense コード -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1796975428667007"
+    crossorigin="anonymous"></script>
+
+  <!-- headのコンポーネントを読み込む -->
+  <div id="head">
+    <head-template></head-template>
+  </div>
+
+  <!--bootstrap を読み込む-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link href="style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- ヘッダーのコンポーネントを読み込む -->
+    <header id="header">
+      <header-template></header-template>
+    </header>
+
+    <!-- メイン -->
+    <main>
+
+      <!-- 見出しのコンポーネントを読み込む -->
+      <div id="display">
+        <title-display></title-display>
+      </div>
+
+      <!-- タブの中身 -->
+      <div id="tabBox">
+
+        <!-- タブの切り替えボタン -->
+        <div id="tabs">
+          <input type="radio" value="1" id="tab1" v-model="isActive"></input>
+          <label for="tab1">チェック項目</label>
+          <input type="radio" value="2" id="tab2" v-model="isActive"></input>
+          <label for="tab2">作文のコツ</label>
+          <input type="radio" value="3" id="tab3" v-model="isActive"></input>
+          <label for="tab3">避けたい表現</label>
+          <input type="radio" value="4" id="tab4" v-model="isActive"></input>
+          <label for="tab4">採点ルール</label>
+          <input type="radio" value="5" id="tab5" v-model="isActive"></input>
+          <label for="tab5">利用者の方へ</label>
+          <input type="radio" value="6" id="tab6" v-model="isActive"></input>
+          <label for="tab6">参考文献など</label>
+        </div>
+
+        <div id="contents">
+
+          <!-- タブ1の中身 -->
+          <div v-if="isActive == '1'">
+            <!-- 画面がタブレット端末以上の場合の説明テキスト -->
+            <lu class="d-none d-md-block pb-2 m-3">
+              <li>
+                <mark1>赤</mark1>：ほぼ必要ない・・・「<strong>という</strong>」「<strong>こと</strong>」など。　<font size="2">
+                  (抽象的で読みにくくなる表現です。)
+                </font>
+              </li>
+              <li>
+                <mark2>黄</mark2>：見直すべき・・・「<strong>～が、</strong>」など。　<font size="2">(多用すると読みにくくなる表現です。)</font>
+              </li>
+              <li>
+                <mark3>緑</mark3>：注意するべき・・・「<strong>あれ</strong>」「<strong>それ</strong>」などの指示語　<font size="2">(示す内容は明らかですか？)
+                </font>
+              </li>
+              <li>
+                <mark4>水色</mark4>：１文が60文字以上・・・もう少し短くできないか考えましょう。
+              </li>
+              <li>
+                <mark5>青</mark5>：１文が100文字以上・・・1文が長すぎます。文を分けましょう。
+              </li>
+              <li>
+                <mark6>紫</mark6>：特定のカタカナ英語・・・<font size="2">(「思いつき」は「ジャストアイデア」と書く必要がありますか？)</font>
+              </li>
+            </lu>
+            <!-- 画面がタブレット端末未満の場合の説明テキスト -->
+            <lu class="visible-md d-md-none  pb-2 m-3">
+              <li>
+                <mark1>赤</mark1>：ほぼ必要ない
+              </li>
+              <li>
+                <mark2>黄</mark2>：見直すべき
+              </li>
+              <li>
+                <mark3>緑</mark3>：注意するべき(指示語)
+              </li>
+              <li>
+                <mark4>水色</mark4>：1文が60文字以上
+              <li>
+                <mark5>青</mark5>：1文が100文字以上
+              </li>
+              <li>
+                <mark6>紫</mark6>：特定のカタカナ英語
+              </li>
+            </lu>
+
+          </div>
+
+          <!-- タブ2の中身 -->
+          <div v-else-if="isActive == '2'">
+            <div class="shadow p-3 mb-3 bg-white rounded pb-2 m-3">
+              <h4>読みやすく書く7つのコツ</h4>
+            </div>
+
+            <h5 class="pt-3">①結論を最初に書く。</h5>
+
+            <p class="pb-4 m-3">結論から書くと、内容が伝わりやすくなります。</p>
+
+            <h5 class="pt-3">②一文を短くする。</h5>
+
+            <p class="pb-4 m-3">人が見た瞬間に知覚できるのは9～13文字までと言われます。<br>
+              できるだけ1文を60文字以内に抑え、大きく超える場合は文を分けます。<br>
+            </p>
+
+            <h5 class="pt-3">③主語と述語は近づけて使う。</h5>
+            <p class="pb-4 m-3">
+              <mark2>主語</mark2>と<mark3>述語</mark3>は、近づけて使います。長くなる場合は、文を2つに分けます。<br><br>
+              【×訂正前 例】<br>
+              <mark2>トランプのマークは</mark2>春はクラブ、夏はダイヤ、秋はハート、冬はスペードといったように、それぞれ<mark3>春夏秋冬を表しています。</mark3><br>
+
+              ↓<br>
+
+              【〇訂正後 例】<br>
+              <mark2>トランプのマークは</mark2>、<mark3>春夏秋冬を表しています。</mark3><br>
+              それぞれ春はクラブ、夏はダイヤ、秋はハート、冬はスペードを意味します。<br>
+            </p>
+
+            <h5 class="pt-3">④難しい言葉や表現を使わない。</h5>
+            <p class="pb-4 m-3">不必要な専門用語や、難しい言葉は使いません。<br>
+              基本的には、小学生でも分かる表現を心がけます。</p>
+
+            <h5 class="pt-3">⑤指示語(こそあど言葉)を多用しない。</h5>
+            <p class="pb-4 m-3">指示語を使う場合は、示す対象が分かりやすいか確認します。</p>
+
+            <h5 class="pt-3">⑥二重否定を使わない。</h5>
+            <p class="pb-4 m-3">二重否定の例：「～できないこともない」</p>
+
+            <h5 class="pt-3">⑦ミスや改善の余地をチェックする。</h5>
+            <p class="pb-4 m-3">このアプリの出番です！</p>
+
+          </div>
+
+
+          <!-- タブ3の中身 -->
+          <div v-else-if="isActive == '3'">
+            <div class="shadow p-3 mb-3 bg-white rounded pb-2 m-3">
+              <h4>避けるべき主な表現</h4>
+            </div>
+
+            <h5 class="pt-3">【こと】</h5>
+            <p class="pb-4 m-3">文章が読みにくくなります。ほぼ使う必要はありません。<br><br>
+              【×訂正前 例】<br>
+              自分が考えている<mark1>こと</mark1>を、相手に伝える<mark1>こと</mark1>は難しい。<br>
+              ↓<br>
+              【〇訂正後 例】<br>
+              自分の考えを、相手に伝えるのは難しい。<br>
+            </p>
+
+            <h5 class="pt-3">【という　/　といった　/　もの】</h5>
+            <p class="pb-4 m-3">文章が読みにくくなります。使用は控えましょう。<br><br>
+              【×訂正前 例】<br>
+              ハンバーガーやシュークリーム<mark1>といった</mark1>食べ物は、逆さまにすると中身がこぼれにくくなり、食べやすい<mark1>というわけ</mark1>です。<br>
+              ↓<br>
+              【〇訂正後 例】<br>
+              ハンバーガーやシュークリームは、逆さまにすると中身がこぼれにくくなり食べやすいです。<br>
+            </p>
+
+
+            <h5 class="pt-3">【ましたが　/　ですが　/　が、】</h5>
+            <p class="pb-4 m-3">
+              接続詞の「が、」には、「順接」と「逆接」の役割があります。<br><br>
+              どちら意味で使われているかは、読み手が文脈から判断する必要があります。<br>
+              したがって、できるだけ使用を避けるべきです。<br><br>
+              「順接」の場合は「が、」を使わないで済む方法を考えます。<br><br>
+              【×訂正前 例】<br>
+              明後日のコンサートのチケットです<mark1>が、</mark1>既に完売しました。<br>
+              ↓<br>
+              【〇訂正後 例】<br>
+              明後日のコンサートのチケット<mark3>は、</mark3>既に完売しました。<br>
+              <br><br>
+              「逆接」の場合は「しかし」、「ところが」、「けれども」などに置き換えます。<br><br>
+              【×訂正前 例】<br>
+              1948年5月14日にユダヤ人がイスラエルを建国しました<mark1>が、</mark1>翌日の1948年5月15日にアラブ諸国がイスラエルに攻め込み、第一次中東戦争が勃発しました。<br>
+              ↓<br>
+              【〇訂正後 例】<br>
+              1948年5月14日にユダヤ人がイスラエルを建国しました。<br>
+              <mark3>しかし、</mark3>翌日の1948年5月15日にアラブ諸国がイスラエルに攻め込み、第一次中東戦争が勃発しました。<br>
+            </p>
+
+            <h5 class="pt-3">【ような　/　ように　/　など　/　くらい(ぐらい)】</h5>
+            <p class="pb-4 m-3">文章が煩雑になる可能性が高いので、できるだけ使用を避けます。<br><br>
+              【×訂正前 例】<br>
+              iPnone<mark1>のような</mark1>スマートフォンは～<br>
+              ↓<br>
+              【〇訂正後 例】<br>
+              スマートフォンは～<br>
+              <font size="2">※「スマートフォン」は、わざわざ「iPnoneのような」を入れなくても伝わるはずです。</font>
+            </p>
+
+            <h5 class="pt-3">【られる】</h5>
+            <p class="pb-4 m-3">「受け身表現」は、主語が分かりにくくなりやすいです。<br><br>
+              【×訂正前 例】<br>
+              ～だと考え<mark1>られ</mark1>ます。<br>
+              ↓<br>
+              【〇訂正後 例】<br>
+              ～だと考えます。<br>
+              <font size="2">※こちらの表現の方が、主語が「私」だと分かりやすい。</font>
+            </p>
+
+            <h5 class="pt-3">【ついて】</h5>
+            <p class="pb-2 m-3">必要の無い場合が多いです。<br><br>
+              【×訂正前 例】<br>
+              新商品に<mark1>ついて</mark1>紹介します。<br>
+              ↓<br>
+              【〇訂正後 例】<br>
+              新商品を紹介します。<br>
+            </p>
+          </div>
+
+          <!-- タブ4の中身 -->
+          <div v-else-if="isActive == '4'">
+            <lu class="pb-2 m-3 TaxtList">
+              <li class="TextDeta">
+                <mark1>赤チェック</mark1>×4点減点。
+              </li>
+              <li>
+                <mark2>黄チェック</mark2>の数が文の6割より多い場合、超えた数×2点減点。
+              </li>
+              <li>
+                <mark3>指示語</mark3>の数が文の5割より多い場合、超えた数×2点減点。
+              </li>
+              <li>
+                <mark4>60文字を超える文</mark4>×3点減点。
+              </li>
+              <li>
+                <mark5>100文字を超える文</mark5>×8点減点。
+              </li>
+              <li>
+                1文で<mark4>60文字</mark4>を超えた文字数×0.1点減点。(99文字まで)
+              </li>
+              <li>
+                1文で<mark5>100文字</mark5>を超えた文字数×0.3点減点。
+              </li>
+              <li>
+                <mark6>特定のカタカナ英語</mark6>の数の1.4乗を減点。
+              </li>
+            </lu>
+            <p>
+              ※採点はエンタメ要素です。真に受けすぎないでください。<br>
+              ※1文の区切りは、読点(。)や感嘆符(！)や改行によって判定しています。<br>
+              ※最終的な点数は、小数点以下を切り捨てています。
+            </p>
+          </div>
+
+          <!-- タブ5の中身 -->
+          <div v-else-if="isActive == '5'">
+            <lu class="pb-4 m-3 TaxtList">
+              <li>
+                採点はエンタメ要素です。真に受けすぎないでください。
+              </li>
+              <li>
+                入力されたテキスト情報は、収集や公開されません。
+              </li>
+              <li>
+                当ウェブアプリは、日本語で書かれた文章を対象にしています。
+              </li>
+              <li>
+                当ウェブアプリは、無償です。便利だと思った方は、シェアをしていただけると開発の励みになります。
+              </li>
+              <li>
+                ご意見、ご感想、バグの報告は、Contactページよりお知らせください。
+              </li>
+            </lu>
+          </div>
+
+          <!-- タブ6の中身 -->
+          <div v-else-if="isActive == '6'">
+            <div class="shadow p-3 mb-3 bg-white rounded pb-2 m-3">
+              <h5>参考文献など</h5>
+            </div>
+            <p class="pb-4 m-3">
+              <a class="nav-link" href="https://amzn.to/3l0UC0N" target="_blank"
+                rel="noopener noreferrer">『「文章術のベストセラー100冊」のポイントを1冊にまとめてみた。』</span></a>
+              　　著者：藤吉 豊, 小川 真理子<br>　　初版：2021/1/8<br>　　出版社:日経BP
+            </p>
+            <p class="pb-2 m-3">
+              <a class="nav-link" href="https://amzn.to/3BR4tw0" target="_blank"
+                rel="noopener noreferrer">『やさしい文章術　レポート・論文の書き方』</span></a>
+              　　著者：樋口 裕一<br>　　初版：2002/12/10<br>　　出版社:中央公論新社
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- ここから分割されたページの左側 -->
+        <div class="col-md-6">
+
+          <div class="shadow p-3 mb-3 bg-white rounded pb-2 m-3">
+            <h5>テキストを貼り付けてください</h5>
+          </div>
+          <p>
+            <span style="color:red">
+              <font size="3">※テキストの保存機能はありません。元データを保存した上でお使いください。</font>
+            </span><br>
+          </p>
+
+          <!-- 例文ボタン -->
+          <div id="ExampleTextButton">
+            <img src="./img/loading-black.svg" alt="ローディング待機画像" width="300">読み込み中…
+            <div id="ExampleTextButton">
+            </div>
+          </div>
+
+          <!-- 入力テキストエリア -->
+          <TEXTAREA id="textarea" maxlength="100000" cols="80" rows="15" placeholder="「読みやすさチェッカー」は、文章の読みにくい部分に色付けする文章校正ウェブアプリです。ここにテキストを入力してください。"></TEXTAREA>
+          <!-- 採点結果 -->
+          <div id="ScoreBox" class="pb-2 m-1">この文章の読みやすさは、<font size="100">？</font>点です。</div>
+          <div id="review" class="pb-2 m-1"></div>
+          <div id="TextDeta" class="pb-2 m-1"></div>
+
+        </div>
+
+        <!-- ここから分割されたページの右側 -->
+        <div class="col-md-6">
+          <div class="shadow p-3 mb-3 bg-white rounded pb-2 m-3">
+            <h5>チェック後のテキストを表示します</h5>
+          </div>
+          <div id="TMMenu"></div>
+          </label>
+          <!-- 修正後テキスト -->
+          <div id="box" contenteditable=False class="TextDeta">
+            <img src="./img/loading-black.svg" alt="ローディング待機画像" width="300">読み込み中…
+            <div id="ExampleTextButton">
+            </div>
+
+          </div>
+
+          <div>
+
+    </main>
+
+    <!-- フッターのコンポーネントを読み込む -->
+    <footer id="footer">
+      <right-column></right-column>
+      <footer-template></footer-template>
+      <copyright-text></copyright-text>
+    </footer>
+  </div>
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+
+  <!-- JavaScriptを読み込む-->
+  <script src="Vue.js"></script>
+  <script src="index.js"></script>
+
+  <!-- シェアボタン用のJavaScript -->
+  <!-- Twitter -->
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <!-- facebook -->
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v11.0"
+    nonce="s28FkDyH"></script>
+  <!-- note -->
+  <script async src="https://cdn.st-note.com/js/social_button.min.js"></script>
+  <!-- はてなブックマーク -->
+  <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8"
+    async="async"></script>
+  <!-- Pocket -->
+  <script
+    type="text/javascript">!function (d, i) { if (!d.getElementById(i)) { var j = d.createElement("script"); j.id = i; j.src = "https://widgets.getpocket.com/v1/j/btn.js?v=1"; var w = d.getElementById(i); d.body.appendChild(j); } }(document, "pocket-btn-js");</script>
+  <!-- Line -->
+  <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async"
+    defer="defer"></script>
+
+  <!--ページのロードが終了したときに実行される関数 -->
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      MarkingTextPosting();
+      ButtonInvisible();
+      ExampleTextButtonAppearance();
+    });
+  </script>
+
+</body>
+
+</html>
