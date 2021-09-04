@@ -52,7 +52,7 @@ const headerTemplate = new Vue({
 Vue.component('right-column', {
   template: `
       <div>
-        <div class="shadow p-3 mb-3 bg-white rounded pb-2 m-3">
+        <div class="Larger shadow p-3 rounded pb-2 m-3">
           <h5>関連ページへのリンク</h5>
         </div>
         <ul>
