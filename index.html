@@ -23,17 +23,22 @@
   <meta property="og:title" content="読みやすさチェッカー【文章校正ウェブアプリ】" />
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://o-to.khufrudamonotes.com" />
-  <meta property="og:image" content="image/o-to site title.png" />
   <meta property="og:site_name" content="読みやすさチェッカー【文章校正ウェブアプリ】" />
   <meta name="og:description" content='読みにくい表現にハイライトをつける文章校正ツールです。採点機能もあります。あなたの文章は何点！？'>
   <meta property="og:locale" content="ja_JP" />
+
+  <!-- 画像情報 -->
+  <meta property="og:image" content="image/icon/site-tile-310x310.png" />
+  <meta name="twitter:image" content="image/icon/site-tile-310x310.png" />
   <meta property="og:image:width" content="328" />
   <meta property="og:image:height" content="183" />
 
   <!--ページタイトル-->
   <title>読みやすさチェッカー【文章校正ウェブアプリ】</title>
+
   <!--ページの概要-->
-  <meta name="description" content="読みにくい表現にハイライトをつける文章校正ツールです。採点機能もあります。あなたの文章は何点！？">
+  <meta property="description" content="読みにくい表現にハイライトをつける文章校正ツールです。採点機能もあります。あなたの文章は何点！？">
+  <meta property="og:description" content="読みにくい表現にハイライトをつける文章校正ツールです。採点機能もあります。あなたの文章は何点！？">
   <meta name="keyword" content="文章校正,文章,読みやすさ,読みやすさチェッカー">
 
   <!--Internet Explorer用の設定-->
@@ -42,11 +47,14 @@
   <!--viewport設定(レスポンシブデザイン対応)-->
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
+  <!--OGPタグ/Facebook-->
+  <meta property="fb:app_id" content="1715157832011699">
+
   <!--OGPタグ/twitterカード-->
   <meta name="twitter:card" content="Summary Card" />
   <meta name="twitter:site" content="@khufrudamonotes" />
   <meta name="twitter:title" content="読みやすさチェッカー【文章校正ウェブアプリ】" />
-  <meta name="twitter:description" content="読みにくい表現にハイライトをつける文章校正ツールです。採点機能もあります。あなたの文章は何点！？">
+  <meta property="twitter:description" content="読みにくい表現にハイライトをつける文章校正ツールです。採点機能もあります。あなたの文章は何点！？">
   <meta name="twitter:image" content="./img/title_img.png" />
 
   <!--サイトアイコンの指定-->
@@ -416,7 +424,8 @@
           </div>
 
           <!-- 入力テキストエリア -->
-          <TEXTAREA id="textarea" maxlength="100000" cols="80" rows="15" placeholder="「読みやすさチェッカー」は、文章の読みにくい部分に色付けする文章校正ウェブアプリです。ここにテキストを入力してください。"></TEXTAREA>
+          <TEXTAREA id="textarea" maxlength="100000" cols="80" rows="15"
+            placeholder="「読みやすさチェッカー」は、文章の読みにくい部分に色付けする文章校正ウェブアプリです。ここにテキストを入力してください。"></TEXTAREA>
           <!-- 採点結果 -->
           <div id="ScoreBox" class="pb-2 m-1">この文章の読みやすさは、<font size="100">？</font>点です。</div>
           <div id="review" class="pb-2 m-1"></div>

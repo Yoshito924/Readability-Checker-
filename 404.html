@@ -1,422 +1,192 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head
-    prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#"
-  >
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138258869-1"></script>
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138258869-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'UA-138258869-1');
-  </script> -->
+  </script>
 
-    <!-- Vue を読み込む -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <!-- Vue を読み込む -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 
-    <!--文字エンコーディングの指定-->
-    <meta charset="utf-8" />
+  <!--文字エンコーディングの指定-->
+  <meta charset="utf-8" />
 
-    <!--サイト情報-->
-    <meta
-      property="og:title"
-      content="読みやすさチェッカー【文章校正ウェブアプリ】"
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://o-to.khufrudamonotes.com" />
-    <meta property="og:image" content="image/o-to site title.png" />
-    <meta
-      property="og:site_name"
-      content="読みやすさチェッカー【文章校正ウェブアプリ】"
-    />
-    <meta
-      name="og:description"
-      content='"読みやすさチェッカー"は、文章中の読みにくい表現にハイライトをつけてくれる文章校正ツールです。採点機能もあります。'
-    />
-    <meta property="og:locale" content="ja_JP" />
-    <meta property="og:image:width" content="328" />
-    <meta property="og:image:height" content="183" />
+  <!--サイト情報-->
+  <meta property="og:title" content="読みやすさチェッカー【文章校正ウェブアプリ】" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://o-to.khufrudamonotes.com" />
+  <meta property="og:site_name" content="読みやすさチェッカー【文章校正ウェブアプリ】" />
+  <meta name="og:description" content='"読みやすさチェッカー"は、文章中の読みにくい表現にハイライトをつけてくれる文章校正ツールです。採点機能もあります。' />
+  <meta property="og:locale" content="ja_JP" />
 
-    <!--ページタイトル-->
-    <title>読みやすさチェッカー【文章校正ウェブアプリ】</title>
+  <!-- 画像情報 -->
+  <meta property="og:image" content="image/icon/site-tile-310x310.png" />
+  <meta name="twitter:image" content="image/icon/site-tile-310x310.png" />
+  <meta property="og:image:width" content="328" />
+  <meta property="og:image:height" content="183" />
 
-    <!--ページの概要-->
-    <meta
-      name="keyword"
-      content="文章校正,文章,読みやすさ,読みやすさチェッカー"
-    />
+  <!--ページタイトル-->
+  <title>読みやすさチェッカー【文章校正ウェブアプリ】</title>
 
-    <!--Internet Explorer用の設定-->
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!--ページの概要-->
+  <meta name="keyword" content="文章校正,文章,読みやすさ,読みやすさチェッカー" />
 
-    <!--viewport設定(レスポンシブデザイン対応)-->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!--Internet Explorer用の設定-->
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <!--OGPタグ/twitterカード-->
-    <meta name="twitter:card" content="Summary Card" />
-    <meta name="twitter:site" content="@khufrudamonotes" />
-    <meta
-      name="”twitter:title”"
-      content="読みやすさチェッカー【文章校正ウェブアプリ】"
-    />
-    <meta name="”twitter:description”" content="”“" />
-    <meta name="”twitter:image”" content="./img/title_img.png" />
+  <!--viewport設定(レスポンシブデザイン対応)-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!--サイトアイコンの指定-->
-    <meta
-      name="msapplication-square70x70logo"
-      content="./img/icon/site-tile-70x70.png"
-    />
-    <meta
-      name="msapplication-square150x150logo"
-      content="./img/icon/site-tile-150x150.png"
-    />
-    <meta
-      name="msapplication-wide310x150logo"
-      content="./img/icon/site-tile-310x150.png"
-    />
-    <meta
-      name="msapplication-square310x310logo"
-      content="./img/icon/site-tile-310x310.png"
-    />
-    <meta name="msapplication-TileColor" content="#0078d7" />
+  <!--OGPタグ/Facebook-->
+  <meta property="fb:app_id" content="1715157832011699">
 
-    <link
-      rel="shortcut icon"
-      type="image/vnd.microsoft.icon"
-      href="./img/icon/favicon.ico"
-    />
-    <link
-      rel="icon"
-      type="image/vnd.microsoft.icon"
-      href="./img/icon/favicon.ico"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="57x57"
-      href="./img/icon/apple-touch-icon-57x57.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="60x60"
-      href="./img/icon/apple-touch-icon-60x60.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="72x72"
-      href="./img/icon/apple-touch-icon-72x72.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="76x76"
-      href="./img/icon/apple-touch-icon-76x76.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="114x114"
-      href="./img/icon/apple-touch-icon-114x114.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="120x120"
-      href="./img/icon/apple-touch-icon-120x120.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="144x144"
-      href="./img/icon/apple-touch-icon-144x144.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="152x152"
-      href="./img/icon/apple-touch-icon-152x152.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="./img/icon/apple-touch-icon-180x180.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="36x36"
-      href="./img/icon/android-chrome-36x36.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="48x48"
-      href="./img/icon/android-chrome-48x48.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="72x72"
-      href="./img/icon/android-chrome-72x72.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="./img/icon/android-chrome-96x96.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="128x128"
-      href="./img/icon/android-chrome-128x128.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="144x144"
-      href="./img/icon/android-chrome-144x144.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="152x152"
-      href="./img/icon/android-chrome-152x152.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="./img/icon/android-chrome-192x192.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="256x256"
-      href="./img/icon/android-chrome-256x256.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="384x384"
-      href="./img/icon/android-chrome-384x384.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="512x512"
-      href="./img/icon/android-chrome-512x512.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="36x36"
-      href="./img/icon/icon-36x36.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="48x48"
-      href="./img/icon/icon-48x48.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="72x72"
-      href="./img/icon/icon-72x72.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="./img/icon/icon-96x96.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="128x128"
-      href="./img/icon/icon-128x128.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="144x144"
-      href="./img/icon/icon-144x144.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="152x152"
-      href="./img/icon/icon-152x152.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="160x160"
-      href="./img/icon/icon-160x160.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="./img/icon/icon-192x192.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="196x196"
-      href="./img/icon/icon-196x196.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="256x256"
-      href="./img/icon/icon-256x256.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="384x384"
-      href="./img/icon/icon-384x384.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="512x512"
-      href="./img/icon/icon-512x512.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="./img/icon/icon-16x16.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="24x24"
-      href="./img/icon/icon-24x24.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./img/icon/icon-32x32.png"
-    />
-    <link rel="manifest" href="./img/icon/manifest.json" />
+  <!--OGPタグ/twitterカード-->
+  <meta name="twitter:card" content="Summary Card" />
+  <meta name="twitter:site" content="@khufrudamonotes" />
+  <meta name="”twitter:title”" content="読みやすさチェッカー【文章校正ウェブアプリ】" />
+  <meta name="”twitter:description”" content="”“" />
+  <meta name="”twitter:image”" content="./img/title_img.png" />
 
-    <!-- AdSense コード -->
-    <!-- <script data-ad-client="ca-pub-1796975428667007" async
+  <!--サイトアイコンの指定-->
+  <meta name="msapplication-square70x70logo" content="./img/icon/site-tile-70x70.png" />
+  <meta name="msapplication-square150x150logo" content="./img/icon/site-tile-150x150.png" />
+  <meta name="msapplication-wide310x150logo" content="./img/icon/site-tile-310x150.png" />
+  <meta name="msapplication-square310x310logo" content="./img/icon/site-tile-310x310.png" />
+  <meta name="msapplication-TileColor" content="#0078d7" />
+
+  <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="./img/icon/favicon.ico" />
+  <link rel="icon" type="image/vnd.microsoft.icon" href="./img/icon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="57x57" href="./img/icon/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="./img/icon/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="./img/icon/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="./img/icon/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="./img/icon/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="./img/icon/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="./img/icon/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="./img/icon/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/icon/apple-touch-icon-180x180.png" />
+  <link rel="icon" type="image/png" sizes="36x36" href="./img/icon/android-chrome-36x36.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="./img/icon/android-chrome-48x48.png" />
+  <link rel="icon" type="image/png" sizes="72x72" href="./img/icon/android-chrome-72x72.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="./img/icon/android-chrome-96x96.png" />
+  <link rel="icon" type="image/png" sizes="128x128" href="./img/icon/android-chrome-128x128.png" />
+  <link rel="icon" type="image/png" sizes="144x144" href="./img/icon/android-chrome-144x144.png" />
+  <link rel="icon" type="image/png" sizes="152x152" href="./img/icon/android-chrome-152x152.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./img/icon/android-chrome-192x192.png" />
+  <link rel="icon" type="image/png" sizes="256x256" href="./img/icon/android-chrome-256x256.png" />
+  <link rel="icon" type="image/png" sizes="384x384" href="./img/icon/android-chrome-384x384.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="./img/icon/android-chrome-512x512.png" />
+  <link rel="icon" type="image/png" sizes="36x36" href="./img/icon/icon-36x36.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="./img/icon/icon-48x48.png" />
+  <link rel="icon" type="image/png" sizes="72x72" href="./img/icon/icon-72x72.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="./img/icon/icon-96x96.png" />
+  <link rel="icon" type="image/png" sizes="128x128" href="./img/icon/icon-128x128.png" />
+  <link rel="icon" type="image/png" sizes="144x144" href="./img/icon/icon-144x144.png" />
+  <link rel="icon" type="image/png" sizes="152x152" href="./img/icon/icon-152x152.png" />
+  <link rel="icon" type="image/png" sizes="160x160" href="./img/icon/icon-160x160.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./img/icon/icon-192x192.png" />
+  <link rel="icon" type="image/png" sizes="196x196" href="./img/icon/icon-196x196.png" />
+  <link rel="icon" type="image/png" sizes="256x256" href="./img/icon/icon-256x256.png" />
+  <link rel="icon" type="image/png" sizes="384x384" href="./img/icon/icon-384x384.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="./img/icon/icon-512x512.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/icon/icon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="24x24" href="./img/icon/icon-24x24.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/icon/icon-32x32.png" />
+  <link rel="manifest" href="./img/icon/manifest.json" />
+
+  <!-- AdSense コード -->
+  <!-- <script data-ad-client="ca-pub-1796975428667007" async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
 
-    <!-- headのコンポーネントを読み込む -->
-    <div id="head">
-      <head-template></head-template>
-    </div>
+  <!-- headのコンポーネントを読み込む -->
+  <div id="head">
+    <head-template></head-template>
+  </div>
 
-    <!--bootstrap を読み込む-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-      crossorigin="anonymous"
-    />
-    <link href="style.css" rel="stylesheet" />
-  </head>
+  <!--bootstrap を読み込む-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+  <link href="style.css" rel="stylesheet" />
+</head>
 
-  <body>
-    <div class="container">
-      <!-- ヘッダーのコンポーネントを読み込む -->
-      <header id="header">
-        <header-template></header-template>
-      </header>
+<body>
+  <div class="container">
+    <!-- ヘッダーのコンポーネントを読み込む -->
+    <header id="header">
+      <header-template></header-template>
+    </header>
 
-      <!-- メイン -->
-      <main>
-        <!-- 見出しのコンポーネントを読み込む -->
-        <div id="display">
-          <title-display></title-display>
+    <!-- メイン -->
+    <main>
+      <!-- 見出しのコンポーネントを読み込む -->
+      <div id="display">
+        <title-display></title-display>
+      </div>
+      <div class="Larger shadow p-3 rounded pb-2 m-3">
+        <h5>404 not foun</h5>
+      </div>
+      <div class="row">
+        <div>
+          申し訳ございません。<br />お探しのページは見つかりませんでした。
         </div>
-        <div class="Larger shadow p-3 rounded pb-2 m-3">
-          <h5>404 not foun</h5>
-        </div>
-        <div class="row">
-          <div>
-            申し訳ございません。<br />お探しのページは見つかりませんでした。
-          </div>
-        </div>
+      </div>
 
-        <!-- 例文ボタン -->
-        <div id="ExampleTextButton">
-          <a
-            class="c-button pb-2 m-1"
-            href="index.html"
-            rel="noopener noreferrer"
-            >読みやすさチェッカーに戻る</a
-          >
-        </div>
-      </main>
+      <!-- 例文ボタン -->
+      <div id="ExampleTextButton">
+        <a class="c-button pb-2 m-1" href="index.html" rel="noopener noreferrer">読みやすさチェッカーに戻る</a>
+      </div>
+    </main>
 
-      <!-- フッターのコンポーネントを読み込む -->
-      <footer id="footer">
-        <right-column></right-column>
-        <footer-template></footer-template>
-        <copyright-text></copyright-text>
-      </footer>
-    </div>
+    <!-- フッターのコンポーネントを読み込む -->
+    <footer id="footer">
+      <right-column></right-column>
+      <footer-template></footer-template>
+      <copyright-text></copyright-text>
+    </footer>
+  </div>
 
-    <!-- JavaScriptを読み込む-->
-    <script src="Vue.js"></script>
-    <script src="index.js"></script>
+  <!-- JavaScriptを読み込む-->
+  <script src="Vue.js"></script>
+  <script src="index.js"></script>
 
-    <!-- シェアボタン用のJavaScript -->
-    <!-- Twitter -->
-    <script
-      async
-      src="https://platform.twitter.com/widgets.js"
-      charset="utf-8"
-    ></script>
-    <!-- facebook -->
-    <script
-      async
-      defer
-      crossorigin="anonymous"
-      src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v11.0"
-      nonce="s28FkDyH"
-    ></script>
-    <!-- note -->
-    <script
-      async
-      src="https://cdn.st-note.com/js/social_button.min.js"
-    ></script>
-    <!-- はてなブックマーク -->
-    <script
-      type="text/javascript"
-      src="https://b.st-hatena.com/js/bookmark_button.js"
-      charset="utf-8"
-      async="async"
-    ></script>
-    <!-- Pocket -->
-    <script type="text/javascript">
-      !(function (d, i) {
-        if (!d.getElementById(i)) {
-          var j = d.createElement("script");
-          j.id = i;
-          j.src = "https://widgets.getpocket.com/v1/j/btn.js?v=1";
-          var w = d.getElementById(i);
-          d.body.appendChild(j);
-        }
-      })(document, "pocket-btn-js");
-    </script>
-    <!-- Line -->
-    <script
-      src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js"
-      async="async"
-      defer="defer"
-    ></script>
+  <!-- シェアボタン用のJavaScript -->
+  <!-- Twitter -->
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <!-- facebook -->
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v11.0"
+    nonce="s28FkDyH"></script>
+  <!-- note -->
+  <script async src="https://cdn.st-note.com/js/social_button.min.js"></script>
+  <!-- はてなブックマーク -->
+  <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8"
+    async="async"></script>
+  <!-- Pocket -->
+  <script type="text/javascript">
+    !(function (d, i) {
+      if (!d.getElementById(i)) {
+        var j = d.createElement("script");
+        j.id = i;
+        j.src = "https://widgets.getpocket.com/v1/j/btn.js?v=1";
+        var w = d.getElementById(i);
+        d.body.appendChild(j);
+      }
+    })(document, "pocket-btn-js");
+  </script>
+  <!-- Line -->
+  <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async"
+    defer="defer"></script>
 
-    <!-- JavaScript Bundle with Popper -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
