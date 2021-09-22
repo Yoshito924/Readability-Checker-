@@ -487,6 +487,7 @@ function MarkingTextPosting() {
 
 };
 
+
 function KeitaiToZyotai() {
     //テキストを置換する
     text = text
@@ -1096,9 +1097,9 @@ function ExampleTextOne() {
     ButtonInvisible();
 };
 
-function ExampleTextButtonAppearance(){
+function ExampleTextButtonAppearance() {
     document.getElementById("ExampleTextButton").innerHTML
-    = `<a class="c-button pb-2 m-1" onclick="ExampleTextOne()">試しに読みにくいテキストを入力する</a>`
+        = `<a class="c-button pb-2 m-1" onclick="ExampleTextOne()">試しに読みにくいテキストを入力する</a>`
 };
 
 function ButtonInvisible() {
