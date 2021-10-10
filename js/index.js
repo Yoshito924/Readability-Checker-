@@ -1,10 +1,12 @@
+'use strict';
+
 // 小数点第3位以下を切り捨てる関数 (JavaScriptには元からそういう関数が無いっぽいので)
 function FloorToThree(num) {
     return +(Math.floor(num + "e+3") + "e-3");
 };
 
 //入力されたテキストをサニタイジング(エスケープ処理)する関数
-function Sanitizing() {
+function Sanitizing(text) {
     text = text
         .replace(/&/g, "&amp;")
         .replace(/"/g, "&quot;")
@@ -12,33 +14,35 @@ function Sanitizing() {
         .replace(/>/g, "&gt;")
         .replace(/\n\n\n+/g, "<br \/><br \/>")
         .replace(/\n/g, "<br \/>");
+
+    return text;
 };
 
 //使用に注意が必要な表現を着色し、文章を採点する関数
-function PaintText() {
+function PaintText(text) {
 
     //満点(スタート時の点数)
-    Score = 100;
+    let Score = 100;
 
     //テキストの長さを取得する
-    TextLength = text
+    let TextLength = text
         .replace(/<br \/>/g, '')
         .length;
 
-    NoSpaceTextLength = text
+    let NoSpaceTextLength = text
         .replace(/<br \/>/g, '')
         .replace(/　/g, '')
         .replace(/ /g, '')
         .length;
 
     //文章を読点などで分割して配列に格納する。(区切り文字を直前の要素に含める)
-    Sentence = text.split(/(.+?(?:。<br \/>|．<br \/>|！<br \/>|？<br \/>|<br \/>|。|．|！|？))/).filter(s => s.length > 0);
-    NoSpaceSentence = text.split(/(.+?(?:。<br \/>|．<br \/>|！<br \/>|？<br \/>|<br \/>|。|．|！|？))/).filter(s => s.length > 0);
+    let Sentence = text.split(/(.+?(?:。<br \/>|．<br \/>|！<br \/>|？<br \/>|<br \/>|。|．|！|？))/).filter(s => s.length > 0);
+    let NoSpaceSentence = text.split(/(.+?(?:。<br \/>|．<br \/>|！<br \/>|？<br \/>|<br \/>|。|．|！|？))/).filter(s => s.length > 0);
 
-    LongSentenceCount = 0;
-    SuperLongSentenceCount = 0;
-    ExcessTextPoint = 0;
-    SuperExcessTextPoint = 0;
+    let LongSentenceCount = 0;
+    let SuperLongSentenceCount = 0;
+    let ExcessTextPoint = 0;
+    let SuperExcessTextPoint = 0;
 
     //既定の文字数を超える文章にハイライトをつけつつ採点する。
     for (let i = 0; i < Sentence.length; i++) {
@@ -393,34 +397,38 @@ function PaintText() {
         .replace(/AI/g, '<mark6>AI</mark6>')
 
     //赤チェックひとつにつき4点減点
-    RedCount = (text.match(/<mark1>/g) || []).length;
+    let RedCount = (text.match(/<mark1>/g) || []).length;
     Score = Score - (RedCount * 4);
 
     //見直すべき語がセンテンスの数の8割より多い場合、上回る見直すべき語の数だけ2点減点
-    WarningCount = (text.match(/<mark2>/g) || []).length;
+    let WarningCount = (text.match(/<mark2>/g) || []).length;
+    let WarningScoreText;
     if (WarningCount >= (NoSpaceSentence.length * 0.6)) {
         Score = Score - (2 * (WarningCount - Math.round(NoSpaceSentence.length * 0.6)));
-        WarningScore = (2 * (WarningCount - Math.round(NoSpaceSentence.length * 0.6)));
+        let WarningScore = (2 * (WarningCount - Math.round(NoSpaceSentence.length * 0.6)));
         WarningScoreText = `${WarningCount}≧${FloorToThree(NoSpaceSentence.length * 0.6)}　∴減点：2×(${WarningCount}-${Math.round(NoSpaceSentence.length * 0.6)})=${WarningScore}`;
     } else {
         WarningScoreText = `${WarningCount}＜${FloorToThree(NoSpaceSentence.length * 0.6)}　∴減点：0`;
     };
 
     //指示語がセンテンスの数の8割より多い場合、上回る指示語の数だけ2点減点
-    DemonstrativeCount = (text.match(/<mark3>/g) || []).length;
+    let DemonstrativeCount = (text.match(/<mark3>/g) || []).length;
+    let DemonstrativeScoreText;
     if (DemonstrativeCount >= (NoSpaceSentence.length * 0.5)) {
         Score = Score - (2 * (DemonstrativeCount - Math.round(NoSpaceSentence.length * 0.5)));
-        DemonstrativeScore = (2 * (DemonstrativeCount - Math.round(NoSpaceSentence.length * 0.5)));
+        let DemonstrativeScore = (2 * (DemonstrativeCount - Math.round(NoSpaceSentence.length * 0.5)));
         DemonstrativeScoreText = `${DemonstrativeCount}≧${FloorToThree(NoSpaceSentence.length * 0.5)}　∴減点：2×(${DemonstrativeCount}-${Math.round(NoSpaceSentence.length * 0.5)})=${DemonstrativeScore}`;
     } else {
         DemonstrativeScoreText = `${DemonstrativeCount}＜${FloorToThree(NoSpaceSentence.length * 0.5)}　∴減点：0`;
     };
 
     //特定カタカナ英語の数の2乗点減点
-    KatakanaCount = (text.match(/<mark6>/g) || []).length;
+    let KatakanaCount = (text.match(/<mark6>/g) || []).length;
     Score = Score - KatakanaCount ** 1.4;
-    KatakanaScore = KatakanaCount ** 1.4;
-
+    let KatakanaScore = KatakanaCount ** 1.4;
+    let ScoreText;
+    let ReviewText;
+    let TextData;
     //採点結果のテキスト
     if (NoSpaceTextLength >= 10) {
         ScoreText = `この文章の読みやすさは、<font size="10">${Math.floor(Score)}</font>点です。`;
@@ -442,7 +450,7 @@ function PaintText() {
         } else if (Score < -300) {
             ReviewText = '読みにくすぎます…( ゜A゜；)<br>まるで暗号です。読み手は"解読"する必要があるでしょう。';
         };
-        TextDeta = `<span style="color:gray">文字数：${TextLength}<br>
+        TextData = `<span style="color:gray">文字数：${TextLength}<br>
         文字数(スペースを除く)：${NoSpaceTextLength}</span><br><br>
         <lu>
         <li>文の数：${NoSpaceSentence.length}</li>
@@ -457,11 +465,12 @@ function PaintText() {
     } else {
         ScoreText = `この文章の読みやすさは、<font size="10">？</font>点です。`;
         ReviewText = "テキストを10文字以上入力してください。";
-        TextDeta = `<span style="color:gray">文字数：${TextLength}<br>
+        TextData = `<span style="color:gray">文字数：${TextLength}<br>
         文字数(スペースを除く)：${NoSpaceTextLength}</span><br><br>`
     };
+    let after_text = text;
     //採点結果の戻り値。
-    return { ScoreText, ReviewText, TextDeta };
+    return { ScoreText, ReviewText, TextData, after_text };
 };
 
 
@@ -469,26 +478,26 @@ function PaintText() {
 function MarkingTextPosting() {
 
     //テキストエリア内のテキストを取得
-    text = document.getElementById("textarea").value;
+    let text = document.getElementById("textarea").value;
 
     //入力されたテキストをサニタイジングする関数
-    Sanitizing(text);
+    text = Sanitizing(text);
 
     //使用に注意が必要な表現を着色する関数
-    let { ScoreText, ReviewText, TextDeta } = PaintText(text);
+    let { ScoreText, ReviewText, TextData, after_text } = PaintText(text);
 
     //表示ボックスに書き込む
-    document.getElementById("box").innerHTML = text;
+    document.getElementById("box").innerHTML = after_text;
 
     //点数を書き込む
     document.getElementById("ScoreBox").innerHTML = `${ScoreText}`;
     document.getElementById("review").innerHTML = `${ReviewText}`;
-    document.getElementById("TextDeta").innerHTML = `${TextDeta}`;
+    document.getElementById("TextData").innerHTML = `${TextData}`;
 
 };
 
 
-function KeitaiToZyotai() {
+function KeitaiToZyotai(text) {
     //テキストを置換する
     text = text
         .replace(/見ることができる/g, '見られる')
@@ -754,10 +763,11 @@ function KeitaiToZyotai() {
         .replace(/です。/g, 'だ。')
         .replace(/です/g, '')
 
+    return text;
 };
 
 //敬体を常体にする関数
-function BuzzWord() {
+function BuzzWord(text) {
     //テキストを置換する
     text = text
         .replace(/ソーシャルネットワークサービス/g, "SNS")
@@ -930,12 +940,14 @@ function BuzzWord() {
         .replace(/アセット/g, "財産")
         .replace(/VR/g, "仮想現実")
         .replace(/AR/g, "拡張現実")
+
+    return text;
 };
 
 
 
 //特定の漢字表現をひらがなする関数
-function KanjiWord() {
+function KanjiWord(text) {
     //テキストを置換する
     text = text
         .replace(/我が/g, 'わが')
@@ -976,50 +988,92 @@ function KanjiWord() {
         .replace(/由々しい/g, 'ゆゆしい')
         .replace(/有る/g, 'ある')
         .replace(/無い/g, 'ない')
+
+    return text;
+};
+
+//カッコの全角半角を修正する関数
+function kakkoReplace(text) {
+
+    text = text
+        //英数字の全角括弧を半角括弧へ置換する。
+        .replace(/\（([0-9a-zA-Z])/g, '\($1')
+        .replace(/([0-9a-zA-Z])\）/g, '$1\)')
+        //日本語の半角括弧を全角括弧へ置換
+        .replace(/\(([\u30a0-\u30ff\u3040-\u309f\u3005-\u3006\u30e0-\u9fcf])/g, '\（$1')
+        .replace(/([\u30a0-\u30ff\u3040-\u309f\u3005-\u3006\u30e0-\u9fcf])\)/g, '$1\）')
+
+    //全角括弧と半角括弧が混ざった場合、先頭の方に合わせる。
+    text = text
+        .replace(/\((.*)\）/g, '\($1\)')
+        .replace(/\（(.*)\)/g, '\（$1\）')
+
+    return text;
+};
+
+
+function kakkoChange() {
+    //テキストエリア内のテキストを取得
+    let text = document.getElementById("textarea").value;
+
+    text = kakkoReplace(text);
+
+    //入力されたテキストをサニタイジングする関数
+    text = Sanitizing(text);
+
+    //使用に注意が必要な表現を着色する関数
+    let { ScoreText, ReviewText, TextData, after_text } = PaintText(text);
+    //表示ボックスに書き込む
+    document.getElementById("box").innerHTML = after_text;
+
+    //点数を書き込む
+    document.getElementById("ScoreBox").innerHTML = `${ScoreText}`;
+    document.getElementById("review").innerHTML = `${ReviewText}`;
+    document.getElementById("TextData").innerHTML = `${TextData}`;
 };
 
 //特定カタカナ英語を日本語にする関数
 function BuzzCancel() {
 
     //テキストエリア内のテキストを取得
-    text = document.getElementById("textarea").value;
+    let text = document.getElementById("textarea").value;
 
-    BuzzWord(text);
+    text = BuzzWord(text);
 
     //入力されたテキストをサニタイジングする関数
-    Sanitizing(text);
+    text = Sanitizing(text);
 
     //使用に注意が必要な表現を着色する関数
-    let { ScoreText, ReviewText, TextDeta } = PaintText(text);
+    let { ScoreText, ReviewText, TextData, after_text } = PaintText(text);
     //表示ボックスに書き込む
-    document.getElementById("box").innerHTML = text;
+    document.getElementById("box").innerHTML = after_text;
 
     //点数を書き込む
     document.getElementById("ScoreBox").innerHTML = `${ScoreText}`;
     document.getElementById("review").innerHTML = `${ReviewText}`;
-    document.getElementById("TextDeta").innerHTML = `${TextDeta}`;
+    document.getElementById("TextData").innerHTML = `${TextData}`;
 };
 
 //敬体を常体にする関数
 function ZyotaiGo() {
 
     //テキストエリア内のテキストを取得
-    text = document.getElementById("textarea").value;
+    let text = document.getElementById("textarea").value;
 
-    KeitaiToZyotai(text);
+    text = KeitaiToZyotai(text);
 
     //入力されたテキストをサニタイジングする関数
-    Sanitizing(text);
+    text = Sanitizing(text);
 
     //使用に注意が必要な表現を着色する関数
-    let { ScoreText, ReviewText, TextDeta } = PaintText(text);
+    let { ScoreText, ReviewText, TextData, after_text } = PaintText(text);
     //表示ボックスに書き込む
-    document.getElementById("box").innerHTML = text;
+    document.getElementById("box").innerHTML = after_text;
 
     //点数を書き込む
     document.getElementById("ScoreBox").innerHTML = `${ScoreText}`;
     document.getElementById("review").innerHTML = `${ReviewText}`;
-    document.getElementById("TextDeta").innerHTML = `${TextDeta}`;
+    document.getElementById("TextData").innerHTML = `${TextData}`;
 };
 
 
@@ -1027,53 +1081,54 @@ function ZyotaiGo() {
 function KanjiCancel() {
 
     //テキストエリア内のテキストを取得
-    text = document.getElementById("textarea").value;
+    let text = document.getElementById("textarea").value;
 
-    KanjiWord(text);
+    text = KanjiWord(text);
 
     //入力されたテキストをサニタイジングする関数
-    Sanitizing(text);
+    text = Sanitizing(text);
 
     //使用に注意が必要な表現を着色する関数
-    let { ScoreText, ReviewText, TextDeta } = PaintText(text);
+    let { ScoreText, ReviewText, TextData, after_text } = PaintText(text);
     //表示ボックスに書き込む
-    document.getElementById("box").innerHTML = text;
+    document.getElementById("box").innerHTML = after_text;
 
     //点数を書き込む
     document.getElementById("ScoreBox").innerHTML = `${ScoreText}`;
     document.getElementById("review").innerHTML = `${ReviewText}`;
-    document.getElementById("TextDeta").innerHTML = `${TextDeta}`;
+    document.getElementById("TextData").innerHTML = `${TextData}`;
 };
 
 //特定カタカナ英語を日本語にして敬体を常体にする関数
 function BuzzKeiteiTranslator() {
 
     //テキストエリア内のテキストを取得
-    text = document.getElementById("textarea").value;
+    let text = document.getElementById("textarea").value;
 
-    KanjiWord(text);
-    BuzzWord(text);
-    KeitaiToZyotai(text);
+    text = KanjiWord(text);
+    text = BuzzWord(text);
+    text = KeitaiToZyotai(text);
+    text = kakkoReplace(text);
 
     //入力されたテキストをサニタイジングする関数
-    Sanitizing(text);
+    text = Sanitizing(text);
 
     //使用に注意が必要な表現を着色する関数
-    let { ScoreText, ReviewText, TextDeta } = PaintText(text);
+    let { ScoreText, ReviewText, TextData, after_text } = PaintText(text);
 
     //表示ボックスに書き込む
-    document.getElementById("box").innerHTML = text;
+    document.getElementById("box").innerHTML = after_text;
 
     //点数を書き込む
     document.getElementById("ScoreBox").innerHTML = `${ScoreText}`;
     document.getElementById("review").innerHTML = `${ReviewText}`;
-    document.getElementById("TextDeta").innerHTML = `${TextDeta}`;
+    document.getElementById("TextData").innerHTML = `${TextData}`;
 };
 
 
 //テキスト変更機能を実行する関数
 function TextModification() {
-    TMNumber = Number(document.getElementById("TMNumber").value);
+    let TMNumber = Number(document.getElementById("TMNumber").value);
 
     if (TMNumber === 0) {
         MarkingTextPosting();
@@ -1084,15 +1139,16 @@ function TextModification() {
     } else if (TMNumber === 3) {
         KanjiCancel();
     } else if (TMNumber === 4) {
-        BuzzKeiteiTranslator();
+        kakkoChange();
     } else if (TMNumber === 5) {
+        BuzzKeiteiTranslator();
     };
 };
 
 function ExampleTextOne() {
 
     document.getElementById("textarea").innerHTML
-        = "みなさんは、暇をつぶしたいというときに何をしますか？\n私は、YouTubeを見たりNetflixを見たりすることも無いわけではありませんし、それらを見ることもよくあるのですが、フリー百科事典ウィキペディアの「おまかせ表示」という機能を使って記事を読むこともけっこう好きなんですよ。\nこの「おまかせ表示」は、あの有名なウィキペディアのたくさんの記事の中からランダムを記事を表示してくれるという機能です。\nボタンをクリックするだけで今まで自分が知らなかったような知識に巡り合えるので、リスケで生まれたちょっとした暇を潰す時等のベストプラクティスのひとつだと思います。";
+        = "みなさんは、暇をつぶしたいというときに何をしますか？\n私は、YouTubeを見たりNetflixを見たりすることも無いわけではありませんし、それらを見ることもよくあるのですが、ウィキペディア(フリー百科事典)の「おまかせ表示」という機能を使って記事を読むこともけっこう好きなんですよ。\nこの「おまかせ表示」は、あの有名なウィキペディアのたくさんの記事の中からランダムを記事を表示してくれるという機能です。\nボタンをクリックするだけで今まで自分が知らなかったような知識に巡り合えるので、リスケで生まれたちょっとした暇を潰す時等のベストプラクティスのひとつだと思います。";
     MarkingTextPosting();
     ButtonInvisible();
 };
@@ -1104,16 +1160,16 @@ function ExampleTextButtonAppearance() {
 
 function ButtonInvisible() {
     //テキストエリア内のテキストを取得
-    text = document.getElementById("textarea").value;
-    Sanitizing(text);
-    TextLength = text.replace(/<br \/>/g, '').length;
+    let text = document.getElementById("textarea").value;
+    text = Sanitizing(text);
+    let TextLength = text.replace(/<br \/>/g, '').length;
 
     if (TextLength === 0) {
         document.getElementById("textarea").innerHTML = '';
         document.getElementById("TMMenu").innerHTML = '<br><br><br><br><br><br><br>';
     } else if (TextLength > 1) {
         document.getElementById("ExampleTextButton").innerHTML = ""
-        document.getElementById("TMMenu").innerHTML = '<label for="TMNumber" class="box2 col-10 col-xxl-10 mx-3"><select id="TMNumber" class="form-select my-1" aria-label="Default select example" onchange="TextModification()"><option value="0">テキストの自動修正なし</option><option value="1">①常体を敬体にして、少し読みやすくする。(精度はまちまちです。)</option><option value="2">②特定のカタカナ英語を日本語に変換する。(精度はまちまちです。)</option><option value="3">③特定の漢字表現をひらがなにする。</option><option value="4">①＋②＋③を同時に実行する</option></select>';
+        document.getElementById("TMMenu").innerHTML = '<label for="TMNumber" class="box2 col-10 col-xxl-10 mx-3"><select id="TMNumber" class="form-select my-1" aria-label="Default select example" onchange="TextModification()"><option value="0">テキストの自動修正なし</option><option value="1">①常体を敬体にして、少し読みやすくする。(精度はまちまちです。)</option><option value="2">②特定のカタカナ英語を日本語に変換する。(精度はまちまちです。)</option><option value="3">③特定の漢字表現をひらがなにする。</option><option value="4">④英数字の全角括弧と日本語の半角括弧を矯正</option><option value="5">①＋②＋③＋④を同時に実行する</option></select>';
     };
 }
 
