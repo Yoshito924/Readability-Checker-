@@ -79,6 +79,9 @@ Vue.component('right-column', {
             <a class="nav-link" href="https://yoshito.khufrudamonotes.com/"target="_blank" rel="noopener noreferrer">開発者について</span></a>
           </li>
           <li>
+            <a class="nav-link" href="https://github.com/Yoshito924/Readability-Checker-"target="_blank" rel="noopener noreferrer">GitHub</span></a>
+          </li>
+          <li>
             <a class="nav-link" href="https://khufrudamonotes.com/contact-english"target="_blank" rel="noopener noreferrer">フィードバックはこちらからお願いいたします。</span></a>
           </li>
         </ul>
