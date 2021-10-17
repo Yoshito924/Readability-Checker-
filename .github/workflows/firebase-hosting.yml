@@ -4,14 +4,14 @@ name: firebase-hosting-deploy
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   firebase-deploy:
     runs-on: ubuntu-latest # ubuntuの最新バージョンで実行する
     steps: # 実行されるコマンドたち
-      - uses: actions/checkout@master #リポジトリを持ってくる
-      - uses: w9jds/firebase-action@master
+      - uses: actions/checkout@main #リポジトリを持ってくる
+      - uses: w9jds/firebase-action@main
         with: # 引数
           args: deploy --only hosting #変更をデプロイするコマンドを引数として渡す
         env: # 環境変数
