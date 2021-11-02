@@ -167,77 +167,24 @@ function Kakko() {
 
 
 //英数字の全角括弧と日本語の半角括弧を矯正する処理をする関数
-function WordPressReplace(text) {
+function MyTextReplace(text) {
 
     // リンクをmarkdown用に編集
     text = text
         //英数字の全角括弧を半角括弧へ置換する。
-        .replace(/<!-- .*code -->/g, '```')
-        .replace(/<!--.*-->/g, '')
-
-        .replace(/<h1>(.*)<\/h1>/g, '#$1')
-        .replace(/<h2>(.*)<\/h2>/g, '##$1')
-        .replace(/<h3>(.*)<\/h3>/g, '###$1')
-        .replace(/<h4>(.*)<\/h4>/g, '####$1')
-        .replace(/<h5>(.*)<\/h5>/g, '#####$1')
-        .replace(/<h6>(.*)<\/h6>/g, '######$1')
-
-    // .replace(/<br>/g, '\n')
-
-    // .replace(/.class=\".*?\"/g, '')
-
-    // .replace(/\<a.*?href=\"(http.*?)\".*?\>(.*?)<\/a>/g, '\[$2\]\($1\)')
-    // .replace(/\<a href=\"(http.*?)\".*?\>(.*?)<\/a>/g, '\[$2\]\($1\)')
-
-    // .replace(/<figure>/g, '')
-    // .replace(/<\/figure>/g, '')
-
-    // .replace(/<span>/g, '')
-    // .replace(/<\/span>/g, '')
-
-    // .replace(/<strong>/g, '**')
-    // .replace(/<\/strong>/g, '**')
-
-    // .replace(/<b>/g, '**')
-    // .replace(/<\/b>/g, '**')
-
-    // .replace(/<p>/g, '')
-    // .replace(/<\/p>/g, '')
-
-    // .replace(/<em>/g, '')
-    // .replace(/<\/em>/g, '')
-
-    // .replace(/\*\*+/g, '**')
-
-    // .replace(/<hr\/>/g, '---')
-    // .replace(/<script src=".*?">/g, '')
-
-    // .replace(/\<script type=.*}..\<\/script\>/g, '$1')
-
-    // //両方リンクの場合
-    // .replace(/\[http.*?\]\((.*?)\)/g, '$1')
-
-    // .replace(/\*\*\[(.*?)\]\((.*?)\)\*\*/g, '\[\*\*$1\*\*\]\($2\)')
-    // .replace(/\*\*\[\*\*(.*?)\*\*\]\((.*?)\)\*\*/g, '\[\*\*$1\*\*\]\($2\)')
-
-    // .replace(/<\w*?>/g, '')
-    // .replace(/<\/\w*?>/g, '')
-
-    // .replace(/^・/g, '\- ')
-    // .replace(/\*\**/g, '**')
+        .replace(/a/g, 'a')
 
     return text;
 };
 
 
-
-function ToWordPress() {
+function MyReplace() {
 
     //テキストエリア内のテキストを取得
     let text = document.getElementById("textarea").value;
 
     //使用に注意が必要な表現を着色する関数
-    text = WordPressReplace(text);
+    text = MyTextReplace(text);
 
     //入力されたテキストをサニタイジングする関数
     let after_text = Sanitizing(text);
@@ -249,26 +196,86 @@ function ToWordPress() {
 
 
 //---------------------------------------------------
-//自分用の処理をする関数
-function MyReplace(text) {
+//英単語の先頭文字を大文字にし、2文字目以降の英字を小文字に変換する
+function text_case(text) {
 
-    // リンクをmarkdown用に編集
-    text = text
-        //英数字の全角括弧を半角括弧へ置換する。
-        .replace(/\<mark(.)\>.*?\<\/mark(.)\>/g, '\<mark\$1\>\$\<mark\$2\>')
+    let text_case = document.getElementsByName('text_case');
+
+    if (text_case[0].checked) {
+        // 英単語の先頭文字を大文字にし、2文字目以降の英字を小文字に変換
+        let Sentence = text.split(/(.+?(?:。<br \/>|．<br \/>|！<br \/>|？<br \/>|<br \/>|\s|。|．|！|？))/).filter(s => s.length > 0);
+        for (let i = 0; i < Sentence.length; i++) {
+            // リンクをmarkdown用に編集
+            Sentence[i] = Sentence[i]
+                //小文字に変換
+                .toLowerCase()
+                //最初の1文字だけを大文字に変換。
+                .charAt(0).toUpperCase() + Sentence[i].slice(1).toLowerCase();
+        };
+        //読点で分割した文章を元に戻す。
+        text = Sentence.join("");
+    } else if (text_case[1].checked) {
+        // 全て大文字に変換
+        text = text.toUpperCase()
+    } else if (text_case[2].checked) {
+        // 全て小文字に変換
+        text = text.toLowerCase()
+    } else if (text_case[3].checked) {
+        // スネークケースに変換
+        text = text.toLowerCase();
+        text = text.replace(/ +/g, '_').replace(/_\n/g, '\n');
+    } else if (text_case[4].checked) {
+        // ケバブケースに変換
+        text = text.toLowerCase();
+        text = text.replace(/ +/g, '-').replace(/\-\n/g, '\n');
+    } else if (text_case[5].checked) {
+        //キャメルケース（キャメルノーテーション）に変換。
+        let Sentence = text.split(/(.+?(?:。<br \/>|．<br \/>|！<br \/>|？<br \/>|<br \/>|\s|。|．|！|？))/).filter(s => s.length > 0);
+        for (let i = 0; i < Sentence.length; i++) {
+            // リンクをmarkdown用に編集
+            if (i === 0) {
+                Sentence[i] = Sentence[i]
+                    //小文字に変換
+                    .toLowerCase()
+            } else {
+                Sentence[i] = Sentence[i]
+                    //小文字に変換
+                    .toLowerCase()
+                    //最初の1文字だけを大文字に変換。
+                    .charAt(0).toUpperCase() + Sentence[i].slice(1).toLowerCase();
+            };
+        };
+        //読点で分割した文章を元に戻す。
+        text = Sentence.join("");
+        text = text.replace(/ +/g, "");
+    } else if (text_case[6].checked) {
+        //パスカルケース（アッパーキャメルケース）に変換
+        let Sentence = text.split(/(.+?(?:。<br \/>|．<br \/>|！<br \/>|？<br \/>|<br \/>|\s|。|．|！|？))/).filter(s => s.length > 0);
+        for (let i = 0; i < Sentence.length; i++) {
+            // リンクをmarkdown用に編集
+            Sentence[i] = Sentence[i]
+                //小文字に変換
+                .toLowerCase()
+                //最初の1文字だけを大文字に変換。
+                .charAt(0).toUpperCase() + Sentence[i].slice(1).toLowerCase();
+        };
+        //読点で分割した文章を元に戻す。
+        text = Sentence.join("");
+        text = text.replace(/ +/g, "");
+    };
 
     return text;
 };
 
 
-//自分用の関数
-function MyTextReplace() {
+//英単語の先頭文字を大文字にし、2文字目以降の英字を小文字に変換する関数
+function ProperReplace() {
 
     //テキストエリア内のテキストを取得
     let text = document.getElementById("textarea").value;
 
     //使用に注意が必要な表現を着色する関数
-    text = MyReplace(text);
+    text = text_case(text);
 
     //入力されたテキストをサニタイジングする関数
     let after_text = Sanitizing(text);

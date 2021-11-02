@@ -22,22 +22,24 @@
     <!--サイト情報-->
     <!--サイト情報-->
     <meta property="og:site_name" content="読みやすさチェッカー" />
-    <meta property="og:title" content="「英数字の全角括弧」と「日本語の半角括弧」を置換して矯正するツール | 俺のテキスト置換ツール" />
+    <meta property="og:title" content="テスト用ツール | 俺のテキスト置換ツール" />
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://readability-checker.khufrudamonotes.com/kakko" />
+    <meta property="og:url" content="https://readability-checker.khufrudamonotes.com/my-replace" />
     <meta property="og:locale" content="ja_JP" />
 
     <!-- 画像情報 -->
-    <meta property="og:image" content="https://readability-checker.khufrudamonotes.com/img/kakko_thumbnail.png" />
-    <meta name="twitter:image" content="https://readability-checker.khufrudamonotes.com/img/kakko_thumbnail.png" />
+    <meta property="og:image"
+        content="https://readability-checker.khufrudamonotes.com/img/readability-checker_thumbnail.png" />
+    <meta name="twitter:image"
+        content="https://readability-checker.khufrudamonotes.com/img/readability-checker_thumbnail.png" />
 
     <!--ページタイトル-->
-    <title>「英数字の全角括弧」と「日本語の半角括弧」を置換して矯正するツール | 俺のテキスト置換ツール</title>
+    <title>テスト用ツール | 俺のテキスト置換ツール</title>
 
     <!--ページの概要-->
-    <meta property="description" content="テキストを貼り付けると、「英数字の全角括弧」と「日本語の半角括弧」を置換して矯正するツールです。">
-    <meta property="og:description" content="テキストを貼り付けると、「英数字の全角括弧」と「日本語の半角括弧」を置換して矯正するツールです。">
-    <meta name="keyword" content="括弧,全角括弧,半角括弧,テキスト置換">
+    <meta property="description" content="">
+    <meta property="og:description" content="">
+    <meta name="keyword" content="">
 
     <!--Internet Explorer用の設定-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -51,8 +53,8 @@
     <!--OGPタグ/twitterカード-->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@khufrudamonotes" />
-    <meta name="twitter:title" content="「英数字の全角括弧」と「日本語の半角括弧」を置換して矯正するツール | 俺のテキスト置換ツール" />
-    <meta property="twitter:description" content="テキストを貼り付けると、「英数字の全角括弧」と「日本語の半角括弧」を置換して矯正するツールです。">
+    <meta name="twitter:title" content="テスト用ツール | 俺のテキスト置換ツール" />
+    <meta property="twitter:description" content="">
 
     <!--サイトアイコンの指定-->
     <meta name="msapplication-square70x70logo" content="./img/icon/site-tile-70x70.png">
@@ -133,7 +135,7 @@
             </div>
 
             <div class="Larger shadow p-3 rounded pb-2 m-3">
-                <h3>「英数字の全角括弧」と「日本語の半角括弧」を置換して矯正するツール</h3>
+                <h3>テスト用ツール</h3>
             </div>
 
             <!-- タブの中身 -->
@@ -150,13 +152,13 @@
                     <div v-if="isActive == '1'">
                         <!-- 画面がタブレット端末以上の場合の説明テキスト -->
                         <lu class="pb-2 m-2">
-                            <p class="pb-2">「<b>英数字の全角括弧</b>」と「<b>日本語の半角括弧</b>」を置換して矯正します。</p>
-                            <p class="">※括弧内に英数字と日本語が混在する場合は、先頭の文字で括弧の種類を判定します。</p>
-                            <p class="">※括弧の使い方に厳密なルールは無いみたいなので、必ずしもこの状態が正しいわけではありません。</p>
+                            <p class="">テスト用ツール</p>
+                            <p class=""></p>
                         </lu>
                     </div>
                 </div>
             </div>
+
 
             <div class="row">
                 <!-- ここから分割されたページの左側 -->
@@ -164,13 +166,6 @@
 
                     <div class="Larger shadow p-3 rounded pb-2 m-3">
                         <h5>テキストを貼り付けてください。</h5>
-                    </div>
-
-                    <!-- 例文ボタン -->
-                    <div id="ExampleTextButton">
-                        <img src="./img/loading-black.svg" alt="ローディング待機画像" width="300">読み込み中…
-                        <div id="ExampleTextButton">
-                        </div>
                     </div>
 
                     <!-- 入力テキストエリア -->
@@ -192,7 +187,7 @@
                         </div>
                     </div>
 
-                </div>
+                    <div>
 
         </main>
 
@@ -235,23 +230,20 @@
     <script>
         //文章が入力・変更されたときに実行する
         window.addEventListener('DOMContentLoaded', function () {
+
+            MyReplace();
+
             // input要素を取得
             let input_name = document.getElementById("textarea")
 
-            Kakko();
-            ButtonInvisible();
-            ExampleTextButtonAppearanceKakko();
-
             // イベントリスナーでイベント「input」を登録
             input_name.addEventListener("input", function () {
-                ButtonInvisible();
-                Kakko();
+                MyReplace();
             });
 
             // イベントリスナーでイベント「change」を登録
             input_name.addEventListener("change", function () {
-                ButtonInvisible();
-                Kakko();
+                MyReplace();
             });
         });
     </script>

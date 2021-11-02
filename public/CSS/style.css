@@ -155,3 +155,60 @@ mark8 {
 .ResText {
   font-size: clamp(0.6rem, 0.6rem + 1vw, 1rem);
 }
+
+
+.my-parts {
+  text-align: left;
+}
+.my-parts input[type="checkbox"] {
+  display: none;
+}
+.my-parts input[type="checkbox"] + span {
+  display: inline-block;
+  position: relative;
+  padding: 0 0 0 1.7em;
+  margin: 0 .2em 0;
+  cursor: pointer;
+  font-size: 16px;
+}
+.my-parts input[type="checkbox"] + span::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) rotate(0);
+  background: #333;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  display: block;
+  transition: all 0.5s ease-in-out;
+}
+.my-parts input[type="checkbox"] + span::after {
+	position: absolute;
+	content: "";
+	top: 50%;
+	left: 0.25em;
+	transform: translateY(-50%) rotate(-45deg);
+	width: 1em;
+	height: 0.6em;
+	margin-top: -0.2em;
+	display: block;
+	border-left: 0.1875em solid #fff;
+	border-bottom: 0.1875em solid #fff;
+	transition: all 0.5s ease-in-out;
+	opacity: 1;
+}
+.my-parts input[type="checkbox"]:checked + span {
+	padding-left: 2em;
+}
+.my-parts input[type="checkbox"]:checked + span::before {
+	width: 1.8em;
+	height: 1.8em;
+	transform: translateY(-50%) rotate(-360deg);
+	background: #F44336;
+}
+.my-parts input[type="checkbox"]:checked + span::after {
+	transform: translateY(-50%) rotate(-405deg);
+	width: 1.3em;
+	height: .9em;

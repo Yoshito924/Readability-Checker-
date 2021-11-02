@@ -22,7 +22,7 @@
     <!--サイト情報-->
     <!--サイト情報-->
     <meta property="og:site_name" content="読みやすさチェッカー" />
-    <meta property="og:title" content="「画像のマークダウン記法」を「imgタグ」へ置換するツール | 俺のテキスト置換ツール" />
+    <meta property="og:title" content="アルファベットを「大文字・小文字・任意のcaseスタイル」へ置換するツール | 俺のテキスト置換ツール" />
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://readability-checker.khufrudamonotes.com/my-replace" />
     <meta property="og:locale" content="ja_JP" />
@@ -34,7 +34,7 @@
         content="https://readability-checker.khufrudamonotes.com/img/readability-checker_thumbnail.png" />
 
     <!--ページタイトル-->
-    <title>「画像のマークダウン記法」を「imgタグ」へ置換するツール | 俺のテキスト置換ツール</title>
+    <title>アルファベットを「大文字・小文字・任意のcaseスタイル」へ置換するツール | 俺のテキスト置換ツール</title>
 
     <!--ページの概要-->
     <meta property="description" content="">
@@ -53,7 +53,7 @@
     <!--OGPタグ/twitterカード-->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@khufrudamonotes" />
-    <meta name="twitter:title" content="「画像のマークダウン記法」を「imgタグ」へ置換するツール | 俺のテキスト置換ツール" />
+    <meta name="twitter:title" content=">アルファベットを「大文字・小文字・任意のcaseスタイル」へ置換するツール | 俺のテキスト置換ツール" />
     <meta property="twitter:description" content="">
 
     <!--サイトアイコンの指定-->
@@ -115,7 +115,7 @@
     <!--bootstrap を読み込む-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link href="style.css" rel="stylesheet">
+    <link href="CSS/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -135,7 +135,7 @@
             </div>
 
             <div class="Larger shadow p-3 rounded pb-2 m-3">
-                <h3>「画像のマークダウン記法」を「imgタグ」へ置換するツール</h3>
+                <h3>アルファベットを「大文字・小文字・任意のcaseスタイル」へ置換するツール</h3>
             </div>
 
             <!-- タブの中身 -->
@@ -149,20 +149,34 @@
 
                 <div id="contents">
                     <!-- タブ1の中身 -->
-                    <div v-if="isActive == '1'">
-                        <!-- 画面がタブレット端末以上の場合の説明テキスト -->
-                        <lu class="pb-2 m-2">
-                            <p class="">「画像のマークダウン記法」を「imgタグ」に変換します。</p>
-                            <p class="">GitHubや、Qiitaなどで画像サイズを調整したい場合にお使いください。</p>
-                        </lu>
-                    </div>
+                    <p class="pb-2 m-2">英単語を任意のスタイルへ置換します。</p>
+                    <lu class="">
+                        <form class="my-parts">
+                            <p class="checkbox"><input class="pb-1 m-1" type="radio" name="text_case"
+                                    onchange="ProperReplace()" value="0" checked>英単語の先頭文字を大文字にし、2文字目以降の英字を小文字に変換します。
+                            </p>
+                            <p class="checkbox"><input class="pb-1 m-1" type="radio" name="text_case"
+                                    onchange="ProperReplace()" value="1">全て大文字に変換します。
+                            </p>
+                            <p class="checkbox"><input class="pb-1 m-1" type="radio" name="text_case"
+                                    onchange="ProperReplace()" value="2">全て小文字に変換します。
+                            </p>
+                            <p class="checkbox"><input class="pb-1 m-1" type="radio" name="text_case"
+                                    onchange="ProperReplace()" value="3">snake_case：スネークケースに変換します。
+                            </p>
+                            <p class="checkbox"><input class="pb-1 m-1" type="radio" name="text_case"
+                                    onchange="ProperReplace()" value="4">kebab-case：ケバブケースに変換します。
+                            </p>
+                            <p class="checkbox"><input class="pb-1 m-1" type="radio" name="text_case"
+                                    onchange="ProperReplace()" value="5">camelCase：キャメルケース（キャメルノーテーション）に変換します。
+                            </p>
+                            <p class="checkbox"><input class="pb-1 m-1" type="radio" name="text_case"
+                                    onchange="ProperReplace()" value="6">PascalCase：パスカルケース（アッパーキャメルケース）に変換します。
+                            </p>
+                        </form>
+                    </lu>
                 </div>
             </div>
-
-            <label for="input_width" class="box1 col-3 col-xxl-3">widthを指定
-                <input id="input_width" type="number" class="form-control my-1 mb-3" pattern="^[0-9]+$" maxlength='3'
-                    value="150" placeholder=width aria-label="width" onchange="MyReplace()">
-            </label>
 
             <div class="row">
                 <!-- ここから分割されたページの左側 -->
@@ -235,19 +249,18 @@
         //文章が入力・変更されたときに実行する
         window.addEventListener('DOMContentLoaded', function () {
 
-            MyTextReplace();
-
+            ProperReplace();
             // input要素を取得
             let input_name = document.getElementById("textarea")
 
             // イベントリスナーでイベント「input」を登録
             input_name.addEventListener("input", function () {
-                MyTextReplace();
+                ProperReplace();
             });
 
             // イベントリスナーでイベント「change」を登録
             input_name.addEventListener("change", function () {
-                MyTextReplace();
+                ProperReplace();
             });
         });
     </script>

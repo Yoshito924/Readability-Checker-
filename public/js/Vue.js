@@ -68,6 +68,9 @@ Vue.component('right-column', {
           <li>
             <a class="nav-link" href="markdown-to-img.html">「画像のマークダウン記法」を「imgタグ」へ置換するツール</span></a>
           </li>
+          <li>
+            <a class="nav-link" href="case.html">アルファベットを「大文字・小文字・任意のcaseスタイル」へ置換するツール</span></a>
+          </li>
         </ul>
 
         <div class="Larger shadow p-3 rounded pb-2 m-3">
