@@ -20,10 +20,11 @@
     <meta charset="utf-8">
 
     <!--サイト情報-->
-    <meta property="og:title" content="このアプリについて|読みやすさチェッカー【文章校正ウェブアプリ】" />
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://readability-checker.khufrudamonotes.com/info" />
-    <meta property="og:site_name" content="読みやすさチェッカー【文章校正ウェブアプリ】" />
+    <!--サイト情報-->
+    <meta property="og:site_name" content="読みやすさチェッカー" />
+    <meta property="og:title" content="「ハイフンっぽい横棒」を統一するツール | 俺のテキスト置換ツール" />
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://readability-checker.khufrudamonotes.com/my-replace" />
     <meta property="og:locale" content="ja_JP" />
 
     <!-- 画像情報 -->
@@ -33,11 +34,12 @@
         content="https://readability-checker.khufrudamonotes.com/img/readability-checker_thumbnail.png" />
 
     <!--ページタイトル-->
-    <title>このアプリについて|読みやすさチェッカー【文章校正ウェブアプリ】</title>
+    <title>「ハイフンっぽい横棒」を統一するツール | 俺のテキスト置換ツール</title>
+
     <!--ページの概要-->
-    <meta property="description" content="ご一読ください。">
-    <meta property="og:description" content="ご一読ください。">
-    <meta name="keyword" content="文章校正,文章,読みやすさ,読みやすさチェッカー">
+    <meta property="description" content="">
+    <meta property="og:description" content="">
+    <meta name="keyword" content="">
 
     <!--Internet Explorer用の設定-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -51,9 +53,8 @@
     <!--OGPタグ/twitterカード-->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@khufrudamonotes" />
-    <meta name="twitter:title" content="このアプリについて|読みやすさチェッカー【文章校正ウェブアプリ】" />
-    <meta name="twitter:description" content="ご一読ください。">
-    <meta name="twitter:image" content="./img/title_img.png" />
+    <meta name="twitter:title" content="「ハイフンっぽい横棒」を統一するツール | 俺のテキスト置換ツール" />
+    <meta property="twitter:description" content="">
 
     <!--サイトアイコンの指定-->
     <meta name="msapplication-square70x70logo" content="./img/icon/site-tile-70x70.png">
@@ -115,11 +116,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link href="CSS/style.css" rel="stylesheet">
-
 </head>
 
 <body>
-
     <div class="container">
 
         <!-- ヘッダーのコンポーネントを読み込む -->
@@ -131,64 +130,74 @@
         <main>
 
             <!-- 見出しのコンポーネントを読み込む -->
-            <div id="display">
-                <title-display></title-display>
+            <div id="oreDisplay">
+                <ore-title-display></ore-title-display>
             </div>
 
-            <h3 class="shadow p-3  bg-white rounded mb-5 py-3">このアプリについて</h3>
-            <p class="pb-1"> 開発者：Yoshito Kimura</p>
-            <p class="pb-3"> Mail address：info[a]khufrudamonotes.com　([a]を＠に変えてください)</p>
+            <div class="Larger shadow p-3 rounded pb-2 m-3">
+                <h3>「ハイフンっぽい横棒」を統一するツール</h3>
+            </div>
 
-            <h3 class="Larger shadow p-3 rounded mb-5 py-3">免責事項</h3>
+            <!-- タブの中身 -->
+            <div id="tabBox" class="py-3 m-2">
 
-            <p class="pb-1">
-                当アプリに掲載された情報・資料を利用、使用、ダウンロードするなどの行為に関連して生じたあらゆる損害等について、理由の如何に関わらず、一切の責任を負いません。</p>
-            <h4 class="manual">情報の正確性について</h4>
-            <p class="pb-1">
-                掲載された情報は、正くない可能性があります。</p>
-            <p class="pb-1">
-                もちろん、情報・資料の掲載には細心の注意を払っております。<br> しかし、掲載された情報の内容の正確性は保証しかねます。</p>
+                <!-- タブの切り替えボタン -->
+                <div id="tabs">
+                    <input type="radio" value="1" id="tab1" v-model="isActive"></input>
+                    <label for="tab1">ガイド</label>
+                </div>
 
-            <p class="pb-3">
-                もし、誤った情報を発見された際は、<a href="https://khufrudamonotes.com/contact-english" target="_blank"
-                    rel="noopener noreferrer">コンタクト・フォーム</span></a>よりお知らせください。</p>
+                <div id="contents">
+                    <!-- タブ1の中身 -->
+                    <div v-if="isActive == '1'">
+                        <!-- 画面がタブレット端末以上の場合の説明テキスト -->
+                        <lu class="pb-2 m-2">
+                            <p class="">「ハイフンっぽい横棒」を統一するツールです。</p>
+                        </lu>
+                    </div>
+                </div>
+            </div>
+            <div>
+                統一先の横棒を指定：
+                <input type="text" id="yokobou" required minlength="10" maxlength="20" size="1" value="-"
+                    onchange=hyphenReplace()>
+            </div>
 
-            <h3 class="Larger shadow p-3 rounded mb-5 py-3">プライバシー・ポリシー</h3>
 
-            <h4 class="manual">広告の配信について</h4>
-            <p class="pb-1">
-                このウェブサイトでは、第三者配信の広告サービスGoogleアドセンスを利用しています。</p>
-            <p class="pb-1">
-                Googleなどの第三者配信事業者がCookieを使用して、ユーザーがそのウェブサイトや他のウェブサイトに過去にアクセスした際の情報に基づいて広告を配信します。 </p>
-            <p class="pb-1">
-                Googleが広告Cookieを使用することにより、ユーザーがそのサイトや他のサイトにアクセスした際の情報に基づいて、Googleやそのパートナーが適切な広告をユーザーに表示できます。</p>
-            <p class="pb-1">
-                パーソナライズ広告は 「<a href="https://adssettings.google.com/authenticated" target="_blank"
-                    rel="noopener noreferrer">広告設定</span></a>」より無効にできます。 </p>
-            <p class="pb-1">
-                または、<a href="www.aboutads.info" target="_blank"
-                    rel="noopener noreferrer">www.aboutads.info</span></a>にアクセスすれば、パーソナライズ広告に使われる第三者配信事業者のCookieを無効にできます。
-            </p>
+            <div class="row">
+                <!-- ここから分割されたページの左側 -->
+                <div class="col-md-6">
 
-            <h4 class="manual">アクセス解析ツールについて</h4>
-            <p class="pb-1"> このウェブサイトでは、Googleによるアクセス解析ツールGoogleアナリティクスを利用しています。 </p>
-            <p class="pb-1">
-                Googleアナリティクスはトラフィックデータの収集のためにCookieを使用しています。 </p>
-            <p class="pb-1">
-                トラフィックデータは匿名で収集されており、個人を特定するものではありません。<br>この機能はCookieを無効にすることで収集を拒否することが出来ます。</p>
-            <p class="pb-1">
-                Googleアナリティクスでデータが収集、処理される仕組みについて詳しくは、 「<a
-                    href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank"
-                    rel="noopener noreferrer">ユーザーがGoogleパートナーのサイトやアプリを使用する際のGoogleによるデータ使用</span></a>」をご参照ください。
-            </p>
+                    <div class="Larger shadow p-3 rounded pb-2 m-3">
+                        <h5>テキストを貼り付けてください。</h5>
+                    </div>
 
-            <h4 class="manual">継続的改善</h4>
-            <p class="pb-3"> 個人情報の取扱いに関する運用状況を適宜見直し、継続的な改善に努めるものとし、必要に応じて、本プライバシー・ポリシーを変更することがあります。 </p>
+                    <!-- 入力テキストエリア -->
+                    <TEXTAREA id="textarea" cols="80" rows="15" placeholder="ここにテキストを入力してください。"></TEXTAREA>
+
+                </div>
+
+                <!-- ここから分割されたページの右側 -->
+                <div class="col-md-6">
+                    <div class="Larger shadow p-3 rounded pb-2 m-3">
+                        <h5>変換後のテキストを表示します</h5>
+                    </div>
+
+                    </label>
+                    <!-- 修正後テキスト -->
+                    <div id="box" contenteditable=False class="TextData">
+                        <img src="./img/loading-black.svg" alt="ローディング待機画像" width="300">読み込み中…
+                        <div id="ExampleTextButton"></div>
+                    </div>
+
+                    <div>
 
         </main>
 
         <!-- フッターのコンポーネントを読み込む -->
         <footer id="footer">
+            <a class="nav-link" href="https://qiita.com/non-caffeine/items/77360dda05c8ce510084" target="_blank"
+                rel="noopener noreferrer">参考：ハイフンに似ている横棒を全て統一するᅳㅡ˗𐆑–᭸‒-─−▬𐄐—━‐‑ー﹣―ｰ﹘－⁃➖⁻！</a>
             <right-column></right-column>
             <footer-template></footer-template>
             <copyright-text></copyright-text>
@@ -202,7 +211,7 @@
 
     <!-- JavaScriptを読み込む-->
     <script src="js/Vue.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/replace.js"></script>
 
     <!-- シェアボタン用のJavaScript -->
     <!-- Twitter -->
@@ -221,6 +230,28 @@
     <!-- Line -->
     <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async"
         defer="defer"></script>
+
+    <!--ページのロードが終了したときに実行される関数 -->
+    <script>
+        //文章が入力・変更されたときに実行する
+        window.addEventListener('DOMContentLoaded', function () {
+
+            hyphenReplace();
+
+            // input要素を取得
+            let input_name = document.getElementById("textarea")
+
+            // イベントリスナーでイベント「input」を登録
+            input_name.addEventListener("input", function () {
+                hyphenReplace();
+            });
+
+            // イベントリスナーでイベント「change」を登録
+            input_name.addEventListener("change", function () {
+                hyphenReplace();
+            });
+        });
+    </script>
 
 </body>
 

@@ -31,6 +31,9 @@ Vue.component('header-template', {
           <li>
             <a class="nav-link" href="https://yoshito.khufrudamonotes.com/"target="_blank" rel="noopener noreferrer">開発者について</span></a>
           </li>
+          <li>
+            <a class="nav-link" href="https://github.com/Yoshito924/Readability-Checker-"target="_blank" rel="noopener noreferrer">GitHub</span></a>
+          </li>
         </ul>
       </div>
 
@@ -63,13 +66,16 @@ Vue.component('right-column', {
             <a class="nav-link" href="kakko.html">「英数字の全角括弧」と「日本語の半角括弧」を置換して矯正するツール</span></a>
           </li>
           <li>
-            <a class="nav-link" href="to-markdown.html">「Wordpressのコード」を「マークダウン記法」に置換するツール</span></a>
+            <a class="nav-link" href="hyphen.html">「ハイフンっぽい横棒」を統一するツール</span></a>
+          </li>
+          <li>
+          <a class="nav-link" href="case.html">アルファベットを「大文字・小文字・任意のcaseスタイル」へ置換するツール</span></a>
           </li>
           <li>
             <a class="nav-link" href="markdown-to-img.html">「画像のマークダウン記法」を「imgタグ」へ置換するツール</span></a>
           </li>
           <li>
-            <a class="nav-link" href="case.html">アルファベットを「大文字・小文字・任意のcaseスタイル」へ置換するツール</span></a>
+            <a class="nav-link" href="to-markdown.html">「Wordpressのコード」を「マークダウン記法」に置換するツール</span></a>
           </li>
         </ul>
 

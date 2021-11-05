@@ -165,6 +165,39 @@ function Kakko() {
 };
 
 
+//英数字の全角括弧と日本語の半角括弧を矯正する処理をする関数
+function hyphenTextReplace(text) {
+
+    //テキストエリア内のテキストを取得
+    let yokobou = document.getElementById("yokobou").value;
+
+    // リンクをmarkdown用に編集
+    text = text
+        //英数字の全角括弧を半角括弧へ置換する。
+        .replace(/(-|˗|ᅳ|᭸|‐|‑|‒|–|—|―|⁃|⁻|−|▬|─|━|➖|ー|ㅡ|﹘|﹣|－|ｰ|𐄐|𐆑| )/g, `${yokobou}`)
+
+    return text;
+};
+
+
+function hyphenReplace() {
+
+    //テキストエリア内のテキストを取得
+    let text = document.getElementById("textarea").value;
+
+    //使用に注意が必要な表現を着色する関数
+    text = hyphenTextReplace(text);
+
+    //入力されたテキストをサニタイジングする関数
+    let after_text = Sanitizing(text);
+
+    //表示ボックスに書き込む
+    document.getElementById("box").innerHTML = after_text;
+};
+
+
+
+
 
 //英数字の全角括弧と日本語の半角括弧を矯正する処理をする関数
 function MyTextReplace(text) {
@@ -172,7 +205,7 @@ function MyTextReplace(text) {
     // リンクをmarkdown用に編集
     text = text
         //英数字の全角括弧を半角括弧へ置換する。
-        .replace(/a/g, 'a')
+        .replace(/(http.*)/g, '<a class="nav-link" href="$1"target="_blank" rel="noopener noreferrer">$1</span></a>')
 
     return text;
 };
