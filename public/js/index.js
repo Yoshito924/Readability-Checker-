@@ -1147,7 +1147,7 @@ function TextModification() {
 function ExampleTextOne() {
 
     document.getElementById("textarea").innerHTML
-        = "みなさんは、暇をつぶしたいというときに何をしますか？\n私は、YouTubeを見たりNetflixを見たりすることも無いわけではありませんし、それらを見ることもよくあるのですが、ウィキペディア(フリー百科事典)の「おまかせ表示」という機能を使って記事を読むこともけっこう好きなんですよ。\nこの「おまかせ表示」は、あの有名なウィキペディアのたくさんの記事の中からランダムを記事を表示してくれるという機能です。\nボタンをクリックするだけで今まで自分が知らなかったような知識に巡り合えるので、リスケで生まれたちょっとした暇を潰す時等のベストプラクティスのひとつだと思います。";
+        = "みなさんは、暇をつぶしたいというときに何をしますか？\n私は、YouTubeを見たりNetflixを見たりすることも無いわけではありませんし、それらを見ることもよくあるのですが、ウィキペディア(フリー百科事典)の「おまかせ表示」という機能を使って記事を読むこともけっこう好きなんですよ。\nこの「おまかせ表示」は、あの有名なウィキペディアのたくさんの記事の中からランダムに記事を表示してくれるという機能です。\nボタンをクリックするだけで今まで自分が知らなかったような知識に巡り合えるので、リスケで生まれたちょっとした暇を潰す時等のベストプラクティスのひとつだと思います。";
     MarkingTextPosting();
     ButtonInvisible();
 };
@@ -1184,7 +1184,7 @@ window.addEventListener('DOMContentLoaded', function () {
         MarkingTextPosting();
     });
 
-    // イベントリスナーでイベント「change」を登録
+    // イベントリスナーでイベント「change」を登録
     input_name.addEventListener("change", function () {
         ButtonInvisible();
         MarkingTextPosting();
