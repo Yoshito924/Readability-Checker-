@@ -1154,7 +1154,7 @@ function ExampleTextOne() {
 
 function ExampleTextButtonAppearance() {
     document.getElementById("ExampleTextButton").innerHTML
-        = `<a class="c-button pb-2 m-1" onclick="ExampleTextOne()">試しに読みにくいテキストを入力する</a>`
+        = `<a class="c-button pb-2 m-1" onclick="ExampleTextOne()">試しに"読みにくい例文"を表示する</a>`
 };
 
 function ButtonInvisible() {
