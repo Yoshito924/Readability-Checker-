@@ -460,7 +460,7 @@ function PaintText(text) {
         <li><mark5>100文字を超える文</mark5>の数：${SuperLongSentenceCount}　<span style="color:gray"><font size="2">減点：8×${SuperLongSentenceCount}=${8 * SuperLongSentenceCount}　文字数超過による減点：${FloorToThree(SuperExcessTextPoint)}</span></font></li>
         <li><mark6>特定のカタカナ英語</mark6>の数：${KatakanaCount}　<span style="color:gray"><font size="2">減点：${KatakanaCount}^1.4=${FloorToThree(KatakanaScore)}</span></font></li>
         </lu><br>
-        ※最終的な点数は、小数点以下を切り捨てています。`
+        ※最終的な点数は、小数点以下を切り捨てています。<br>※採点はエンタメ要素です。真に受けすぎないでください。`
     } else {
         ScoreText = `この文章の読みやすさは、<font size="10">？</font>点です。`;
         ReviewText = "テキストを10文字以上入力してください。";
