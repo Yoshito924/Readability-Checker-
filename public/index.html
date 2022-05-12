@@ -144,21 +144,25 @@
         <title-display></title-display>
       </div>
 
+      <div class="pt-2">
+        読みやすさチェッカーは文章の「読みにくそうな部分」を指摘してくれるウェブアプリです。
+      </div>
+
       <!-- タブの中身 -->
-      <div id="tabBox">
+      <div id="tabBox" class="pt-2">
 
         <!-- タブの切り替えボタン -->
         <div id="tabs">
           <input type="radio" value="1" id="tab1" v-model="isActive"></input>
           <label for="tab1">チェック項目</label>
           <input type="radio" value="2" id="tab2" v-model="isActive"></input>
-          <label for="tab2">作文のコツ</label>
+          <label for="tab2">利用者の方へ</label>
           <input type="radio" value="3" id="tab3" v-model="isActive"></input>
-          <label for="tab3">避けたい表現</label>
+          <label for="tab3">作文のコツ</label>
           <input type="radio" value="4" id="tab4" v-model="isActive"></input>
-          <label for="tab4">採点ルール</label>
+          <label for="tab4">避けたい表現</label>
           <input type="radio" value="5" id="tab5" v-model="isActive"></input>
-          <label for="tab5">利用者の方へ</label>
+          <label for="tab5">採点ルール</label>
           <input type="radio" value="6" id="tab6" v-model="isActive"></input>
           <label for="tab6">参考文献など</label>
         </div>
@@ -216,6 +220,31 @@
 
           <!-- タブ2の中身 -->
           <div v-else-if="isActive == '2'">
+            <lu class="pb-4 m-3 TaxtList">
+              <li>
+                読みやすさチェッカーは文章の「読みにくそうな部分」を指摘してくれるウェブアプリです。
+              </li>
+              <li>
+                採点はエンタメ要素です。真に受けすぎないでください。
+              </li>
+              <li>
+                入力されたテキスト情報は収集や公開されません。
+              </li>
+              <li>
+                当ウェブアプリは日本語で書かれた文章を対象にしています。
+              </li>
+              <li>
+                当ウェブアプリは無償です。便利だと思った方は、シェアをしていただけると開発の励みになります。
+              </li>
+              <li>
+                バグの報告、ご意見、ご感想などは、<a href="https://khufrudamonotes.com/contact-english" target="_blank"
+                  rel="noopener noreferrer">Contactページ</span></a>よりお知らせください。
+              </li>
+            </lu>
+          </div>
+
+          <!-- タブ3の中身 -->
+          <div v-else-if="isActive == '3'">
             <div class="Larger shadow p-3 rounded pb-2 m-3">
               <h4>読みやすく書く7つのコツ</h4>
             </div>
@@ -255,11 +284,10 @@
 
             <h5 class="pt-3">⑦ミスや改善の余地をチェックする。</h5>
             <p class="pb-4 m-3">このアプリの出番です！</p>
-
           </div>
 
-          <!-- タブ3の中身 -->
-          <div v-else-if="isActive == '3'">
+          <!-- タブ4の中身 -->
+          <div v-else-if="isActive == '4'">
             <div class="Larger shadow p-3 rounded pb-2 m-3">
               <h4>避けるべき主な表現</h4>
             </div>
@@ -281,7 +309,6 @@
               【〇訂正後 例】<br>
               ハンバーガーやシュークリームは、逆さまにすると中身がこぼれにくくなり食べやすいです。<br>
             </p>
-
 
             <h5 class="pt-3">【ましたが　/　ですが　/　が、】</h5>
             <p class="pb-4 m-3">
@@ -334,8 +361,8 @@
             </p>
           </div>
 
-          <!-- タブ4の中身 -->
-          <div v-else-if="isActive == '4'">
+          <!-- タブ5の中身 -->
+          <div v-else-if="isActive == '5'">
             <lu class="pb-2 m-3 TaxtList">
               <li class="TextData">
                 <mark1>赤チェック</mark1>×4点減点。
@@ -367,28 +394,6 @@
               ※1文の区切りは、読点（。）や感嘆符（！）や改行によって判定しています。<br>
               ※最終的な点数は、小数点以下を切り捨てています。
             </p>
-          </div>
-
-          <!-- タブ5の中身 -->
-          <div v-else-if="isActive == '5'">
-            <lu class="pb-4 m-3 TaxtList">
-              <li>
-                採点はエンタメ要素です。真に受けすぎないでください。
-              </li>
-              <li>
-                入力されたテキスト情報は収集や公開されません。
-              </li>
-              <li>
-                当ウェブアプリは日本語で書かれた文章を対象にしています。
-              </li>
-              <li>
-                当ウェブアプリは無償です。便利だと思った方は、シェアをしていただけると開発の励みになります。
-              </li>
-              <li>
-                バグの報告、ご意見、ご感想などは、<a href="https://khufrudamonotes.com/contact-english" target="_blank"
-                  rel="noopener noreferrer">Contactページ</span></a>よりお知らせください。
-              </li>
-            </lu>
           </div>
 
           <!-- タブ6の中身 -->
