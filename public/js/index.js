@@ -578,6 +578,7 @@ function KeitaiToZyotai(text) {
         .replace(/並びます/g, '並ぶ')
         .replace(/囲みます/g, '囲う')
         .replace(/呼びます/g, '呼ぶ')
+        .replace(/使いません/g, '使わない')
         .replace(/使います/g, '使う')
         .replace(/行いません/g, '行わない')
         .replace(/行います/g, '行う')
@@ -702,6 +703,7 @@ function KeitaiToZyotai(text) {
         .replace(/ましたが/g, 'したが')
 
         .replace(/ますが、/g, 'る。しかし、')
+        .replace(/ですけど/g, 'だが')
         .replace(/ですが/g, 'だが')
         .replace(/ますが/g, 'るが')
 
@@ -738,6 +740,7 @@ function KeitaiToZyotai(text) {
         .replace(/ありません/g, 'ない')
         .replace(/しいです。/g, 'しい。')
         .replace(/のです。/g, 'のだ。')
+        .replace(/いです。/g, 'い。')
 
         .replace(/てみました/g, 'てみた')
         .replace(/でしょうか/g, 'だろうか')
