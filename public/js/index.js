@@ -141,6 +141,27 @@ function PaintText(text) {
         .replace(/(ちょっと)/g, '<mark2>$1</mark2>')
         .replace(/(いわゆる)/g, '<mark2>$1</mark2>')
 
+        // 括弧
+        .replace(/(\）\　)/g, '<mark2>$1</mark2>')
+        .replace(/(　\）)/g, '<mark2>$1</mark2>')
+        .replace(/(\（\　)/g, '<mark2>$1</mark2>')
+        .replace(/(　\（)/g, '<mark2>$1</mark2>')
+
+        .replace(/(\)\　)/g, '<mark2>$1</mark2>')
+        .replace(/(　\))/g, '<mark2>$1</mark2>')
+        .replace(/(\(\　)/g, '<mark2>$1</mark2>')
+        .replace(/(　\()/g, '<mark2>$1</mark2>')
+
+        .replace(/(\) )/g, '<mark2>$1</mark2>')
+        .replace(/(\ \))/g, '<mark2>$1</mark2>')
+        .replace(/(\( )/g, '<mark2>$1</mark2>')
+        .replace(/(\ \()/g, '<mark2>$1</mark2>')
+
+        .replace(/(\） )/g, '<mark2>$1</mark2>')
+        .replace(/(\ \）)/g, '<mark2>$1</mark2>')
+        .replace(/(\（ )/g, '<mark2>$1</mark2>')
+        .replace(/(\ \（)/g, '<mark2>$1</mark2>')
+
         //特定の漢字表現
         .replace(/(所謂)/g, '<mark2>$1</mark2>')
         .replace(/(我が)/g, '<mark2>$1</mark2>')
