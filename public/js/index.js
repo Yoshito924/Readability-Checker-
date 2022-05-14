@@ -73,6 +73,10 @@ function PaintText(text) {
 
     //使用に注意が必要な表現にハイライトをつける。
     text = text
+        .replace(/(どもの)/g, 'ドモノ')
+
+        //------------------------------
+
         .replace(/(という)/g, '<mark1>$1</mark1>')
         .replace(/(といった)/g, '<mark1>$1</mark1>')
 
@@ -415,6 +419,11 @@ function PaintText(text) {
         .replace(/(モダン)/g, '<mark6>$1</mark6>')
         .replace(/(リスケ)/g, '<mark6>$1</mark6>')
         .replace(/(AI)/g, '<mark6>$1</mark6>')
+
+        //---------------------------------------
+
+        .replace(/(ドモノ)/g, 'どもの')
+
 
     //赤チェックひとつにつき4点減点
     let RedCount = (text.match(/<mark1>/g) || []).length;
