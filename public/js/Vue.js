@@ -95,6 +95,40 @@ Vue.component('right-column', {
           </li>
         </ul>
 
+        <div class="Larger shadow p-3 rounded pb-2 m-3">
+          <h5>サポートのお願い</h5>
+        </div>
+
+          <p>継続的なサイト運営、コンテンツ制作のためにあなたのサポートが必要です。</p>
+
+          <p><a href="https://www.paypal.com/paypalme/KHUFRUDAMONOTES/1000JPY" target="_blank"
+              rel="noreferrer noopener"><strong>PayPal.Me</strong></a>及び<a href="https://buy.stripe.com/9AQdTx6y006YbDy001"
+              target="_blank" rel="noreferrer noopener"><strong>stripe</strong></a>からサポートをお願いいたします。</p>
+
+          <ul>
+            <li><a href="https://www.paypal.com/paypalme/KHUFRUDAMONOTES/1000JPY" target="_blank"
+                rel="noreferrer noopener">PayPal.Meの決済リンク</a>
+            </li>
+            <li><a href="https://buy.stripe.com/9AQdTx6y006YbDy001" target="_blank"
+                rel="noreferrer noopener">stripeの決済リンク</a>
+            </li>
+          </ul>
+
+          <p class="has-small-font-size">
+            ※リンク先へ飛んだだけでは決済は行われません。
+          </p>
+
+          <p class="has-small-font-size">
+            ※PayPal.Meは<a href="https://www.paypal.com/paypalme/KHUFRUDAMONOTES/1000JPY" target="_blank"
+              rel="noreferrer noopener">リンク先</a>へアクセスし、「送信」を選択してください。
+          </p>
+
+          <p>いつもありがとうございます。</p>
+
+          <p style="text-align: left" class="py-2  pb-3">
+            開発者：<a href="https://yoshito.khufrudamonotes.com/" target="_blank"
+              rel="noreferrer noopener">キムラヨシト</a>(KHUFRUDAMO NOTES)
+          </p>
       </div>
         `
 })
