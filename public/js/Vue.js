@@ -55,7 +55,7 @@ Vue.component('right-column', {
       <div>
 
         <div class="Larger shadow p-3 rounded pb-2 m-3">
-          <h5>テキスト系ツールの一覧</h5>
+          <h5>作ったテキスト系ツールの一覧</h5>
         </div>
 
         <ul>
@@ -63,13 +63,16 @@ Vue.component('right-column', {
             <a class="nav-link" href="index.html">読みやすさチェッカー</span></a>
           </li>
           <li>
+          　<a class="nav-link" href="free-conversion.html">任意の文字列を一気に置換するツール</span></a>
+          </li>
+          <li>
+          　<a class="nav-link" href="case.html">アルファベットを「大文字・小文字・任意のcaseスタイル」へ置換するツール</span></a>
+          </li>
+          <li>
             <a class="nav-link" href="kakko.html">「英数字の全角括弧」と「日本語の半角括弧」を置換して矯正するツール</span></a>
           </li>
           <li>
             <a class="nav-link" href="hyphen.html">「ハイフンっぽい横棒」を統一するツール</span></a>
-          </li>
-          <li>
-          <a class="nav-link" href="case.html">アルファベットを「大文字・小文字・任意のcaseスタイル」へ置換するツール</span></a>
           </li>
           <li>
             <a class="nav-link" href="markdown-to-img.html">「画像のマークダウン記法」を「imgタグ」へ置換するツール</span></a>

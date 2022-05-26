@@ -32,17 +32,19 @@
     <!--サイト情報-->
     <!--サイト情報-->
     <meta property="og:site_name" content="読みやすさチェッカー" />
-    <meta property="og:title" content="「ハイフンっぽい横棒」を統一するツール | 俺のテキスト置換ツール" />
+    <meta property="og:title" content="自由に置換する | 俺のテキスト置換ツール" />
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://readability-checker.khufrudamonotes.com/my-replace" />
     <meta property="og:locale" content="ja_JP" />
 
     <!-- 画像情報 -->
-    <meta property="og:image" content="https://readability-checker.khufrudamonotes.com/img/hyphen_thumbnail.png" />
-    <meta name="twitter:image" content="https://readability-checker.khufrudamonotes.com/img/hyphen_thumbnail.png" />
+    <meta property="og:image"
+        content="https://readability-checker.khufrudamonotes.com/img/readability-checker_thumbnail.png" />
+    <meta name="twitter:image"
+        content="https://readability-checker.khufrudamonotes.com/img/readability-checker_thumbnail.png" />
 
     <!--ページタイトル-->
-    <title>「ハイフンっぽい横棒」を統一するツール | 俺のテキスト置換ツール</title>
+    <title>自由に置換する | 俺のテキスト置換ツール</title>
 
     <!--ページの概要-->
     <meta property="description" content="">
@@ -61,7 +63,7 @@
     <!--OGPタグ/twitterカード-->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@khufrudamonotes" />
-    <meta name="twitter:title" content="「ハイフンっぽい横棒」を統一するツール | 俺のテキスト置換ツール" />
+    <meta name="twitter:title" content="自由に置換する | 俺のテキスト置換ツール" />
     <meta property="twitter:description" content="">
 
     <!--サイトアイコンの指定-->
@@ -143,7 +145,7 @@
             </div>
 
             <div class="Larger shadow p-3 rounded pb-2 m-3">
-                <h3>「ハイフンっぽい横棒」を統一するツール</h3>
+                <h3>任意の文字列を一気に置換するツール</h3>
             </div>
 
             <!-- タブの中身 -->
@@ -160,42 +162,45 @@
                     <div v-if="isActive == '1'">
                         <!-- 画面がタブレット端末以上の場合の説明テキスト -->
                         <lu class="pb-2 m-2">
-                            <p class="">「ハイフンっぽい横棒」を統一するツールです。</p>
+                            <p class="pb-2">任意の文字列を一気に置換するツールです。面倒くさい書き換え作業もサクッと終わります。</p>
+                            <p class="pb-1">置換したい文字列は、「置換前の文字列,置換後の文字列」の形で指定します。</p>
+                            <p class="pb-2">複数組ある場合は改行して入力します。</p>
+                            <p class="pb-1">とりあえず↓「例文を入力するボタン」を押すと使い方が分かると思います。</p>
                         </lu>
                     </div>
                 </div>
             </div>
-            <div>
-                統一先の横棒を指定：
-                <input type="text" id="yokobou" required minlength="10" maxlength="20" size="1" value="-"
-                    onchange=hyphenReplace()>
+            <div id="ExampleTextButton">
             </div>
-
+            <!-- 入力テキストエリア -->
+            <TEXTAREA id="designation_textarea" cols="80" rows="5" placeholder="ここに「置換前の文字列,置換後の文字列」の形で指定してください。
+※複数の組み合わせを指定したい場合は、改行してください。（置換処理は上に書かれた組み合わせから順番に実行されます。）"></TEXTAREA>
 
             <div class="row">
                 <!-- ここから分割されたページの左側 -->
                 <div class="col-md-6">
 
                     <div class="Larger shadow p-3 rounded pb-2 m-3">
-                        <h5>テキストを貼り付けてください</h5>
+                        <h5>テキストを貼り付けてください。</h5>
                     </div>
 
                     <!-- 入力テキストエリア -->
-                    <TEXTAREA id="textarea" cols="80" rows="15" placeholder="ここにテキストを入力してください。"></TEXTAREA>
+                    <TEXTAREA id="textarea" cols="80" rows="15" placeholder="ここに置換したいテキストを入力してください。"></TEXTAREA>
 
                 </div>
 
                 <!-- ここから分割されたページの右側 -->
                 <div class="col-md-6">
                     <div class="Larger shadow p-3 rounded pb-2 m-3">
-                        <h5>変換後のテキストを表示します</h5>
+                        <h5>置換後のテキストを表示します。</h5>
                     </div>
 
                     </label>
                     <!-- 修正後テキスト -->
                     <div id="box" contenteditable=False class="TextData">
                         <img src="./img/loading-black.svg" alt="ローディング待機画像" width="300">読み込み中…
-                        <div id="ExampleTextButton"></div>
+                        <div id="ExampleTextButton">
+                        </div>
                     </div>
 
                     <div>
@@ -204,8 +209,6 @@
 
         <!-- フッターのコンポーネントを読み込む -->
         <footer id="footer">
-            <a class="nav-link" href="https://qiita.com/non-caffeine/items/77360dda05c8ce510084" target="_blank"
-                rel="noopener noreferrer">参考：ハイフンに似ている横棒を全て統一するᅳㅡ˗𐆑–᭸‒-─−▬𐄐—━‐‑ー﹣―ｰ﹘－⁃➖⁻！</a>
             <right-column></right-column>
             <footer-template></footer-template>
             <copyright-text></copyright-text>
@@ -244,19 +247,37 @@
         //文章が入力・変更されたときに実行する
         window.addEventListener('DOMContentLoaded', function () {
 
-            hyphenReplace();
-
+            freeConversion();
+            ButtonInvisible();
+            ExampleTextButtonAppearanceFreeConversion()
             // input要素を取得
             let input_name = document.getElementById("textarea")
 
             // イベントリスナーでイベント「input」を登録
             input_name.addEventListener("input", function () {
-                hyphenReplace();
+                freeConversion();
+                ButtonInvisible();
             });
 
-            // イベントリスナーでイベント「change」を登録
+            // イベントリスナーでイベント「change」を登録
             input_name.addEventListener("change", function () {
-                hyphenReplace();
+                freeConversion();
+                ButtonInvisible();
+            });
+
+            // input要素を取得
+            let designation_textarea_input_name = document.getElementById("designation_textarea")
+
+            // イベントリスナーでイベント「input」を登録
+            designation_textarea_input_name.addEventListener("input", function () {
+                freeConversion();
+                ButtonInvisible();
+            });
+
+            // イベントリスナーでイベント「change」を登録
+            designation_textarea_input_name.addEventListener("change", function () {
+                freeConversion();
+                ButtonInvisible();
             });
         });
     </script>
