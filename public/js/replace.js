@@ -67,7 +67,7 @@ function freeConversionReplace(text, designation_text) {
         //正規表現でエスケープが必要な文字を置換する。
         before[i] = before[i].replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
         //テキストを配列に従って置換する。
-        text = text.replace(new RegExp(before[i], "g"), after[i]);
+        text = text.replace(new RegExp(before[i], "g"), `<mark2>${after[i]}</mark2>`);
     };
     return text;
 };
@@ -79,14 +79,14 @@ function freeConversion() {
     //テキストエリア内のテキストを取得
     let text = document.getElementById("textarea").value;
 
+    //入力されたテキストをサニタイジングする関数
+    text = Sanitizing(text);
+
     //指定した文字を任意の文字へ一括で変換する関数
     text = freeConversionReplace(text, designation_text);
 
-    //入力されたテキストをサニタイジングする関数
-    let after_text = Sanitizing(text);
-
     //表示ボックスに書き込む
-    document.getElementById("box").innerHTML = after_text;
+    document.getElementById("box").innerHTML = text;
 };
 
 
