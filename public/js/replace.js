@@ -55,25 +55,32 @@ function freeConversionReplace(text, designation_text) {
     for (let i = 0; i < designation_words_array.length; i++) {
         //「,」で置換前の文字列,置換後の文字列を分割して配列に格納する
         designation_words = designation_words_array[i].split(',');
-        if (designation_words === undefined || designation_words === '' || designation_words[0] === '' || designation_words[0] === undefined) {
+        if (designation_words === undefined || designation_words === '' || designation_words[0] === undefined || designation_words[0] === '') {
             break;
         };
         before.push(designation_words[0]);
         after.push(designation_words[1]);
     };
-    console.log(
-        before,
-        after
-    )
+
     for (let i = 0; i < before.length; i++) {
-        //正規表現でエスケープが必要な文字を置換する。
-        before[i] = before[i].replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-        // 配列が空白の場合はbreak
-        if (after[i] === undefined) {
-            text = text.replace(new RegExp(before[i], "g"), `<mark3>${before[i]}</mark3>`);
-        } else {
-            //テキストを配列に従って置換する。
-            text = text.replace(new RegExp(before[i], "g"), `<mark2>${after[i]}</mark2>`);
+        //try-catch文でエラーを回避する。
+        before[i] = `(${before[i]})`
+        try {
+            if (after[i] === undefined) {
+                text = text.replace(new RegExp(before[i], "g"), `<mark3>$1</mark3>`);
+            } else {
+                //テキストを配列に従って置換する。
+                text = text.replace(new RegExp(before[i], "g"), `<mark2>${after[i]}</mark2>`);
+            };
+        } catch (e) {
+            //正規表現でエスケープが必要な文字を置換する。
+            before[i] = before[i].replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+            if (after[i] === undefined) {
+                text = text.replace(new RegExp(before[i], "g"), `<mark3>$1</mark3>`);
+            } else {
+                //テキストを配列に従って置換する。
+                text = text.replace(new RegExp(before[i], "g"), `<mark2>${after[i]}</mark2>`);
+            };
         };
     };
     return text;
@@ -358,15 +365,15 @@ function ToMarkdown() {
     document.getElementById("box").innerHTML = after_text;
 };
 
-
+let seiki = '(https?|ftp)(:\\/\\/[\\w\\/:%#\\$&\\?\\(\\)~\\.=\\+\\-]+)'
 
 //---------------------------------------------------
 // 例文のボタンたち
 function ExampleFreeConversion() {
     document.getElementById("textarea").innerHTML
-        = "今日は古いラジカセと電卓を処分しました。\nその後、デパートでチョコとボールペンを買いました。";
+        = "今日は古いラジカセと電卓を処分しました。\nその後、デパートでチョコとボールペンを買いました。\n\n管理人YouTube：https://www.youtube.com/user/kimukydr/videos";
     document.getElementById("designation_textarea").innerHTML
-        = "ラジカセ,ラジオカセットレコーダー\n電卓,電子卓上計算機\nデパート,デパートメントストア\nチョコ\nボールペン,ボールペイントペン";
+        = `ラジカセ,ラジオカセットレコーダー\n電卓,電子卓上計算機\nデパート,デパートメントストア\nチョコ\nボ..ペン,ボールペイントペン\n${seiki}`;
     ButtonInvisible();
     freeConversion();
 };
