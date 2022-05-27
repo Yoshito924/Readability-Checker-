@@ -34,7 +34,7 @@
     <meta property="og:site_name" content="読みやすさチェッカー" />
     <meta property="og:title" content="テスト用ツール | 俺のテキスト置換ツール" />
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://readability-checker.khufrudamonotes.com/my-replace" />
+    <meta property="og:url" content="https://readability-checker.khufrudamonotes.com/test" />
     <meta property="og:locale" content="ja_JP" />
 
     <!-- 画像情報 -->
@@ -145,7 +145,7 @@
             </div>
 
             <div class="Larger shadow p-3 rounded pb-2 m-3">
-                <h3>テスト用ツール</h3>
+                <h3>テスト用ページ</h3>
             </div>
 
             <!-- タブの中身 -->
@@ -162,7 +162,7 @@
                     <div v-if="isActive == '1'">
                         <!-- 画面がタブレット端末以上の場合の説明テキスト -->
                         <lu class="pb-2 m-2">
-                            <p class="">テスト用ツール</p>
+                            <p class="">テスト用ページ</p>
                             <p class=""></p>
                         </lu>
                     </div>
@@ -179,7 +179,8 @@
                     </div>
 
                     <!-- 入力テキストエリア -->
-                    <TEXTAREA id="textarea" cols="80" rows="15" placeholder="ここにテキストを入力してください。"></TEXTAREA>
+                    <TEXTAREA id="textarea" cols="80" rows="15" placeholder="ここにテキストを入力してください。
+※テキストの保存機能はありません。元データを保存した上でお使いください。"></TEXTAREA>
 
                 </div>
 
@@ -216,6 +217,7 @@
 
     <!-- JavaScriptを読み込む-->
     <script src="js/Vue.js"></script>
+    <script src="js/test.js"></script>
     <script src="js/replace.js"></script>
 
     <!-- シェアボタン用のJavaScript -->
