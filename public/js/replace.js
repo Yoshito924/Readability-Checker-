@@ -63,8 +63,8 @@ function freeConversionReplace(text, designation_text) {
     };
 
     for (let i = 0; i < before.length; i++) {
-        //try-catch文でエラーを回避する。
         before[i] = `(${before[i]})`
+        //try-catch文でエラーを回避する。
         try {
             if (after[i] === undefined) {
                 text = text.replace(new RegExp(before[i], "g"), `<mark3>$1</mark3>`);
