@@ -20,7 +20,7 @@ Vue.component('header-template', {
       <nav class="navbar navbar-expand-xxl navbar-dark fixed-top bg-dark">
       <div class="container-fluid">
 
-      <a class="navbar-brand text-white" href="index.html">読みやすさチェッカー</a>
+      <a class="navbar-brand text-white" href="index.html">①読みやすさチェッカー</a>
 
       <button class="navbar-toggler bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -29,12 +29,21 @@ Vue.component('header-template', {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li>
-            <a class="nav-link" href="https://yoshito.khufrudamonotes.com/"target="_blank" rel="noopener noreferrer">開発者について</span></a>
+            <a class="nav-link" href="free-conversion.html">②一気に置換</span></a>
           </li>
           <li>
-            <a class="nav-link" href="https://github.com/Yoshito924/Readability-Checker-"target="_blank" rel="noopener noreferrer">GitHub</span></a>
+            <a class="nav-link" href="case.html">③アルファベット</span></a>
           </li>
-        </ul>
+          <li>
+            <a class="nav-link" href="kakko.html">④括弧矯正</span></a>
+          </li>
+          <li>
+            <a class="nav-link" href="hyphen.html">⑤ハイフン統一</span></a>
+          </li>
+          <li>
+          <li>
+            <a class="nav-link" href="https://yoshito.khufrudamonotes.com/"target="_blank" rel="noopener noreferrer">【開発者について】</span></a>
+          </li>
       </div>
 
       </div>
@@ -60,25 +69,25 @@ Vue.component('right-column', {
 
         <ul>
           <li>
-            <a class="nav-link" href="index.html">読みやすさチェッカー</span></a>
+            <a class="nav-link" href="index.html">①読みやすさチェッカー</span></a>
           </li>
           <li>
-          　<a class="nav-link" href="free-conversion.html">任意の文字列を一気に置換するツール</span></a>
+          　<a class="nav-link" href="free-conversion.html">②任意の文字列を一気に置換するツール</span></a>
           </li>
           <li>
-          　<a class="nav-link" href="case.html">アルファベットを「大文字・小文字・任意のcaseスタイル」へ置換するツール</span></a>
+          　<a class="nav-link" href="case.html">③アルファベットを「大文字・小文字・任意のcaseスタイル」へ置換するツール</span></a>
           </li>
           <li>
-            <a class="nav-link" href="kakko.html">「英数字の全角括弧」と「日本語の半角括弧」を置換して矯正するツール</span></a>
+            <a class="nav-link" href="kakko.html">④「英数字の全角括弧」と「日本語の半角括弧」を置換して矯正するツール</span></a>
           </li>
           <li>
-            <a class="nav-link" href="hyphen.html">「ハイフンっぽい横棒」を統一するツール</span></a>
+            <a class="nav-link" href="hyphen.html">⑤「ハイフンっぽい横棒」を統一するツール</span></a>
           </li>
           <li>
-            <a class="nav-link" href="markdown-to-img.html">「画像のマークダウン記法」を「imgタグ」へ置換するツール</span></a>
+            <a class="nav-link" href="markdown-to-img.html">⑥「画像のマークダウン記法」を「imgタグ」へ置換するツール</span></a>
           </li>
           <li>
-            <a class="nav-link" href="to-markdown.html">「Wordpressのコード」を「マークダウン記法」に置換するツール</span></a>
+            <a class="nav-link" href="to-markdown.html">⑦「Wordpressのコード」を「マークダウン記法」に置換するツール</span></a>
           </li>
         </ul>
 
