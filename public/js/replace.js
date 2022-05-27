@@ -296,12 +296,12 @@ function ToMarkdownReplace(text) {
         .replace(/<!-- .*code -->/g, '```')
         .replace(/<!--.*-->/g, '')
 
-        .replace(/<h1>(.*)<\/h1>/g, '#$1')
-        .replace(/<h2>(.*)<\/h2>/g, '##$1')
-        .replace(/<h3>(.*)<\/h3>/g, '###$1')
-        .replace(/<h4>(.*)<\/h4>/g, '####$1')
-        .replace(/<h5>(.*)<\/h5>/g, '#####$1')
-        .replace(/<h6>(.*)<\/h6>/g, '######$1')
+        .replace(/<h1>(.*)<\/h1>/g, '# $1')
+        .replace(/<h2>(.*)<\/h2>/g, '## $1')
+        .replace(/<h3>(.*)<\/h3>/g, '### $1')
+        .replace(/<h4>(.*)<\/h4>/g, '#### $1')
+        .replace(/<h5>(.*)<\/h5>/g, '##### $1')
+        .replace(/<h6>(.*)<\/h6>/g, '###### $1')
 
         .replace(/<br>/g, '\n')
 
