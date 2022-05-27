@@ -94,7 +94,10 @@ Vue.component('right-column', {
             <a class="nav-link" href="https://github.com/Yoshito924/Readability-Checker-"target="_blank" rel="noopener noreferrer">GitHub</span></a>
           </li>
           <li>
-            <a class="nav-link" href="https://khufrudamonotes.com/contact-english"target="_blank" rel="noopener noreferrer">フィードバックはこちらからお願いいたします。</span></a>
+            <a class="nav-link" href="https://o-to.khufrudamonotes.com"target="_blank" rel="noopener noreferrer">O-TO【音楽理論ウェブアプリ】</span></a>
+          </li>
+          <li>
+            <a class="nav-link" href="https://khufrudamonotes.com/contact-english"target="_blank" rel="noopener noreferrer">バグの報告やフィードバックはこちらから。</span></a>
           </li>
         </ul>
 
