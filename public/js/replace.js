@@ -403,7 +403,7 @@ function ExampleTextButtonAppearanceMarkdownToImg() {
 //---------------------------------------------------
 function ExampleTextKakko() {
     document.getElementById("textarea").innerHTML
-        = "朝食(パン)を食べました。";
+        = "朝食(ワッフル)を、SNS（Social networking service）を見ながら食べました。\n";
     ButtonInvisible();
     Kakko();
 };
