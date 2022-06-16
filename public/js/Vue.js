@@ -1,16 +1,3 @@
-//headのコンポーネントを定義---------------------------------
-
-Vue.component('head-template', {
-  template: `
-      <div>
-      </div>
-      `
-})
-
-//headのコンポーネントのインスタンスを作成する
-const headTemplate = new Vue({
-  el: '#head'
-})
 
 //ヘッダーのコンポーネントを定義---------------------------------
 
