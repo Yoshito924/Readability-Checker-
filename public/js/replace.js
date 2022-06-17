@@ -92,6 +92,8 @@ function freeConversion() {
     //テキストエリア内のテキストを取得
     let text = document.getElementById("textarea").value;
 
+    text = Sanitizing(text);
+
     //指定した文字を任意の文字へ一括で変換する関数
     let after_text = freeConversionReplace(text, designation_text);
 
