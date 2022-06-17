@@ -1,5 +1,10 @@
 'use strict';
 
+//変換後のtextareaを編集不可（読み取りのみ）にする関数
+function readOnly() {
+    document.getElementById('after_textarea').readOnly = true;
+};
+
 //入力されたテキストをサニタイジング(エスケープ処理)する関数
 function Sanitizing(text) {
     text = text
@@ -9,9 +14,7 @@ function Sanitizing(text) {
         .replace(/>/g, "&gt;")
         .replace(/\n\n\n+/g, "<br \/><br \/>")
         .replace(/\n/g, "<br \/>");
-
-    let after_text = text
-    return after_text;
+    return text;
 };
 
 //---------------------------------------------------
@@ -35,13 +38,9 @@ function MyReplace() {
     let after_text = Sanitizing(text);
 
     //表示ボックスに書き込む
-    document.getElementById("box").innerHTML = after_text;
+    document.getElementById("after_textarea").value = after_text;
 };
 
-
-function after(after) {
-    return after;
-}
 //---------------------------------------------------
 //指定した文字を任意の文字へ一括で変換して書き込む関数
 function freeConversionReplace(text, designation_text) {
@@ -93,14 +92,11 @@ function freeConversion() {
     //テキストエリア内のテキストを取得
     let text = document.getElementById("textarea").value;
 
-    //入力されたテキストをサニタイジングする関数
-    text = Sanitizing(text);
-
     //指定した文字を任意の文字へ一括で変換する関数
-    text = freeConversionReplace(text, designation_text);
+    let after_text = freeConversionReplace(text, designation_text);
 
     //表示ボックスに書き込む
-    document.getElementById("box").innerHTML = text;
+    document.getElementById("after_textarea").innerHTML = after_text;
 };
 
 
@@ -172,7 +168,6 @@ function text_case(text) {
         text = Sentence.join("");
         text = text.replace(/ +/g, "");
     };
-
     return text;
 };
 
@@ -184,13 +179,10 @@ function ProperReplace() {
     let text = document.getElementById("textarea").value;
 
     //使用に注意が必要な表現を着色する関数
-    text = text_case(text);
-
-    //入力されたテキストをサニタイジングする関数
-    let after_text = Sanitizing(text);
+    let after_text = text_case(text);
 
     //表示ボックスに書き込む
-    document.getElementById("box").innerHTML = after_text;
+    document.getElementById("after_textarea").value = after_text;
 };
 
 //---------------------------------------------------
@@ -220,13 +212,10 @@ function Kakko() {
     let text = document.getElementById("textarea").value;
 
     //使用に注意が必要な表現を着色する関数
-    text = KakkoReplace(text);
-
-    //入力されたテキストをサニタイジングする関数
-    let after_text = Sanitizing(text);
+    let after_text = KakkoReplace(text);
 
     //表示ボックスに書き込む
-    document.getElementById("box").innerHTML = after_text;
+    document.getElementById("after_textarea").value = after_text;
 };
 
 //---------------------------------------------------
@@ -250,13 +239,10 @@ function hyphenReplace() {
     let text = document.getElementById("textarea").value;
 
     //使用に注意が必要な表現を着色する関数
-    text = hyphenTextReplace(text);
-
-    //入力されたテキストをサニタイジングする関数
-    let after_text = Sanitizing(text);
+    let after_text = hyphenTextReplace(text);
 
     //表示ボックスに書き込む
-    document.getElementById("box").innerHTML = after_text;
+    document.getElementById("after_textarea").value = after_text;
 };
 
 //---------------------------------------------------
@@ -278,13 +264,10 @@ function MarkdownToImg() {
     let text = document.getElementById("textarea").value;
 
     //使用に注意が必要な表現を着色する関数
-    text = MarkdownToImgReplace(text);
-
-    //入力されたテキストをサニタイジングする関数
-    let after_text = Sanitizing(text);
+    let after_text = MarkdownToImgReplace(text);
 
     //表示ボックスに書き込む
-    document.getElementById("box").innerHTML = after_text;
+    document.getElementById("after_textarea").value = after_text;
 };
 
 //---------------------------------------------------
@@ -356,13 +339,10 @@ function ToMarkdown() {
     let text = document.getElementById("textarea").value;
 
     //使用に注意が必要な表現を着色する関数
-    text = ToMarkdownReplace(text);
-
-    //入力されたテキストをサニタイジングする関数
-    let after_text = Sanitizing(text);
+    let after_text = ToMarkdownReplace(text);
 
     //表示ボックスに書き込む
-    document.getElementById("box").innerHTML = after_text;
+    document.getElementById("after_textarea").value = after_text;
 };
 
 let seiki = '(https?|ftp)(:\\/\\/[\\w\\/:%#\\$&\\?\\(\\)~\\.=\\+\\-]+)'
@@ -403,7 +383,7 @@ function ExampleTextButtonAppearanceMarkdownToImg() {
 //---------------------------------------------------
 function ExampleTextKakko() {
     document.getElementById("textarea").innerHTML
-        = "朝食(ワッフル)を、SNS（Social networking service）を見ながら食べました。\n";
+        = "朝食(ワッフル)を、SNS（Social networking service）を見ながら食べました。";
     ButtonInvisible();
     Kakko();
 };
